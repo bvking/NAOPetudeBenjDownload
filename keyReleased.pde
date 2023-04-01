@@ -361,7 +361,7 @@ void keyReleased() {
 
     //  circularOTHERWay();
     //  circularPENDULARWay();
-    phasePattern(); //same as $
+   // phasePattern(); //same as $
     // MAKE A SORT OF FOLLOW MODE
   }
  key= '#'; 

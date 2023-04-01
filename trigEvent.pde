@@ -81,55 +81,73 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      delayTimeToTrig=140; //ms
      delayTimeToTrig4=70;
      
-         if (measure==1){
-        //   formerKeyMetro = '$';
+         if (beatPrecised==2 && measure==1){
+           formerKeyMetro = '$';
           }
-         if (measure<17){
-          key= '°';
-        //    formerKeyMetro = '$';
-          }
-         if (measure>16 && measure<600){
-         //   formerKeyMetro = '*';
+        
+        
+         if (measure==16 ){
+          // formerKeyMetro = '*';
+           key = '0';
          }
 
-        if (measure<41){
+        if (measure==1){
            delayTimeToTrig4=70;
+          
          }
-      
-         if (measure>=41){
+           if (measure==41 && beatPrecised == 3 ){
            delayTimeToTrig4=140;
+             delayTimeToTrig=100;
+        //  key= '='; keyReleased();
+          key = 'ç';
+         
+
+          }
+      
+         if (measure==42){
+          //   key = '°';
+           formerKeyMetro = '*';
+           delayTimeToTrig4=140;
+          
+
           }
 
-      oscillatorBlocked=0;
 
+       if (measure<41 || measure>=42 ){
+ 
+
+       
         if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
+            oscillatorBlocked=0;
       timeToTrig=millis();
-      propagationLevel=2;
+      propagationLevel=1;
       oscillatorChangingPropagation=true;
       if (measure<41){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
-        key = 'D';
+        key = 'd';
          }
      
-      if (measure>=41){ 
+      if (measure>=41 && measure<=50 ){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
-        key = 'd';
-        key = '0';
+      //  key = 'D'; // D
+       
          }
       
       oscillatorBlocked=oscillatorBlocked%networkSize;
     }
 
          if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4 ){  // 
+          oscillatorBlocked=0;
+
       timeToTrig=millis();
-      propagationLevel=1;
+      propagationLevel=2;
       oscillatorChangingPropagation=true;
         if (measure<41){ 
         //  oscillatorBlocked=oscillatorBlocked+1;
           key = 'f';
          }
         if (measure>=41){ 
-          key = 'F';
+          key = 'F'; //f
            }
       oscillatorBlocked=oscillatorBlocked%networkSize;
    
@@ -137,15 +155,21 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      
     
       if (signalToSplit<0.5 && millis()> 0 && measure>1 && measure<600){  //  timeToTrig+delayTimeToTrig
+       oscillatorBlocked=5;
         timeToTrig=millis();
       propagationLevel=0;
       oscillatorChangingPropagation=false;
      // oscillatorBlocked=oscillatorBlocked-1;
       if (oscillatorBlocked<=0) {
       oscillatorBlocked=networkSize-1;
-      } 
-       key = 'f';
       }
+      if (measure > 41)  {
+          key = 'f';
+         }
+         else  key = 'f';
+      }
+         }
+
     // keyPressed();
      phasePattern();
      oldSplitTimeLfo = splitTimeLfo; 

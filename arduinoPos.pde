@@ -239,16 +239,16 @@ void arduinoPos() {
 
      //   metroPhase[i] %= TWO_PI;
 
-   //  PendularVirtualPosition[i]= int (map (metroPhase[i], PI, TWO_PI, 0, numberOfStep/2)); // better : Metronome pass throug position 0
+     PendularVirtualPosition[i]= int (map (metroPhase[i], PI, TWO_PI, 0, numberOfStep/2)); // better : Metronome pass throug position 0
 
 
-         PendularVirtualPosition[i]= int (map (metroPhase[i], -0.5*PI, 1.5*TWO_PI, 0, numberOfStep/2)); // movement with more amplitude?
+    //     PendularVirtualPosition[i]= int (map (metroPhase[i], -0.5*PI, 1.5*TWO_PI, 0, numberOfStep/2)); // movement with more amplitude?
     //  PendularVirtualPosition[i]= (int) map ( PendularVirtualPosition[i], -4800, -1600, -1600, 1600); // mapped at the scale in Max 4 live
       Pos[i]= int (map (PendularVirtualPosition[i], -1600, 1600, 0, 127)); // to Oscsend 
 
       DataToDueCircularVirtualPosition[i]=PendularVirtualPosition[i]+  ActualVirtualPositionFromOtherMode[i];
       ActualVirtualPosition[i]=DataToDueCircularVirtualPosition[i];
-      
+      ActualVirtualPosition[i]%= numberOfStep;
 
       float rate = map(DataToDueCircularVirtualPosition[i], -800, 800, 0.80f, 1.20f);
       //  rate = 1; //rateSong
@@ -533,8 +533,11 @@ void arduinoPos() {
 
 
    if (keyMode!= " phasePattern ") {
-      //  println(frameCount + ": " + keyMode + " dataMarked" + ( dataMarkedToTeensyJo ));
-      send24DatasToTeensy6motors(7, 3, -3, -1);
+     if (measure <17) {
+      send24DatasToTeensy6motors(6, 3, -3, -1);
+  }
+  else
+      send24DatasToTeensy6motors(8, 3, -3, -1);
 
     }
 

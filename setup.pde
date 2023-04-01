@@ -841,8 +841,10 @@ void setup() {
   
   
 //keyMode = " addSignalOneAndTwoBis ";  
-keyMode = " phasePattern ";                                                                                                                                                                                                                 
-formerKeyMetro = '@';
+keyMode = " phasePattern ";  
+keyMode = " trigEventWithAbletonSignal ";                                                                                                                                                                                                               
+formerKeyMetro = '$';
+oscillatorBlocked = 0;
 translate(0, -800,1000);
  
 }

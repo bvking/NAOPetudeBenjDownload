@@ -518,17 +518,16 @@ void phasePattern() { // need standard mode to be trigged
 
     println (" MIROR ? k$ Shift phase one by one 9 <-- 0. ");
 
-    for (int i = (networkSize-1); i > 1; i--) {
+    for (int i = (networkSize-1); i >= 0; i--) {
+      ActualVirtualPositionFromOtherMode[i]= ActualVirtualPositionFromOtherMode[i]+800;
 
-      print (i); 
-      println ( (networkSize-1)-i);
 
-      netPhaseBase[i]=netOldPhaseBase[(networkSize+1)-i];
-      net.naturalFrequency[i]=OldFrequency[(networkSize+1)-i];
+     // netPhaseBase[i]=netOldPhaseBase[(networkSize+1)-i];
+     // net.naturalFrequency[i]=OldFrequency[(networkSize+1)-i];
     }   
 
-    netPhaseBase[0]=netOldPhaseBase[(networkSize-1)];
-     net.naturalFrequency[0]=OldFrequency[(networkSize-1)];
+   // netPhaseBase[0]=netOldPhaseBase[(networkSize-1)];
+   //  net.naturalFrequency[0]=OldFrequency[(networkSize-1)];
     
   }
     if (key == 'A') { //A$  Shift frequencies one by one. 
@@ -797,7 +796,8 @@ void phasePattern() { // need standard mode to be trigged
     println(" d$: INCREASE (clock way) the gap between phases of 5% from the oscillator " + oscillatorBlocked + " called with the same number as memoryi " + memoryi );
     for (int i = 0; i < networkSize; i++) {
 
-      net.phase[i] +=(oscillatorBlocked-i)*0.05; // oscillator 10 do not nove
+   //   net.phase[i] +=(oscillatorBlocked-i)*0.05; // oscillator 10 do not nove
+        net.phase[i] -=(i+1)*0.05;
     //        net.phase[i] +=(5-i)*0.1; // oscillator 10 do not nove
    //   net.phase[i] +=(networkSize-oscillatorBlocked)*0.05;
     //%%  net.phase[i] = net.phase[i]-(i)*0.05; //oscillatorBlocked;      //     net.phase[i] += (oscillatorBlocked+i)*0.05; reciproque de f ne fonctionne pas
@@ -811,8 +811,9 @@ void phasePattern() { // need standard mode to be trigged
     println(" D$: Increase the gap between phases by f0  ");    
     for (int i = 0; i < networkSize; i++) {
 
-      net.phase[i] +=(oscillatorBlocked-i)*0.1;
-      net.phase[i] =  net.phase[i]%TWO_PI;
+    //  net.phase[i] +=(oscillatorBlocked-i)*0.1;
+       net.phase[i] -=(i+1)*0.1;
+   //   net.phase[i] =  net.phase[i]%TWO_PI;
       printSummary(i);
     }
   }
@@ -1067,7 +1068,7 @@ void phasePattern() { // need standard mode to be trigged
   } else if (key == '0') {//Set all frequencies at 2.0");
     for (int i = 0; i < networkSize-0; i++) {   
       //  net.naturalFrequency[i]=2.0; 
-      net.naturalFrequency[i]=0.5;
+      net.naturalFrequency[i]=1;
     }
     //  printSummary(i);
   } else if (key == '°') {//Set all frequencies at 2.0");
