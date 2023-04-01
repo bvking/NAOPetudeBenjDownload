@@ -144,7 +144,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       if (oscillatorBlocked<=0) {
       oscillatorBlocked=networkSize-1;
       } 
-     //***  key = 'f';
+       key = 'f';
       }
     // keyPressed();
      phasePattern();
