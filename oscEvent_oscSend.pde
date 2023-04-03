@@ -590,7 +590,7 @@ void oscSend(){
   OscMessage myMessage27= new OscMessage("/position4"); // oscillator 
   OscMessage myMessage28= new OscMessage("/position3"); // oscillator 
   OscMessage myMessage29= new OscMessage("/position2"); // oscillator behind
-   
+   /*
   OscMessage myMessage30= new OscMessage("/decompte11"); // oscillator SEND TRIG NOTE IN MAX4LIVE
   OscMessage myMessage31= new OscMessage("/decompte10"); // oscillator 
   OscMessage myMessage32= new OscMessage("/decompte9"); // oscillator 
@@ -601,7 +601,18 @@ void oscSend(){
   OscMessage myMessage37= new OscMessage("/decompte4"); // oscillator 
   OscMessage myMessage38= new OscMessage("/decompte3"); // oscillator 
   OscMessage myMessage39= new OscMessage("/decompte2"); // oscillator behind
-  
+  */
+ OscMessage myMessage30= new OscMessage("/trigModPos11"); // oscillator SEND TRIG NOTE IN MAX4LIVE
+  OscMessage myMessage31= new OscMessage("/trigModPos10"); // oscillator 
+  OscMessage myMessage32= new OscMessage("/trigModPos9"); // oscillator 
+  OscMessage myMessage33= new OscMessage("/trigModPos8"); // oscillator 
+  OscMessage myMessage34= new OscMessage("/trigModPos7"); // oscillator 
+  OscMessage myMessage35= new OscMessage("/trigModPos6"); // oscillato
+  OscMessage myMessage36= new OscMessage("/trigModPos5"); // oscillator 
+  OscMessage myMessage37= new OscMessage("/trigModPos4"); // oscillator 
+  OscMessage myMessage38= new OscMessage("/trigModPos3"); // oscillator 
+  OscMessage myMessage39= new OscMessage("/trigModPos"); // oscillator behind
+
   OscMessage myMessage40= new OscMessage("/dataToLive11"); // oscillator SEND TRIG NOTE IN MAX4LIVE
   OscMessage myMessage41= new OscMessage("/dataToLive10"); // oscillator 
   OscMessage myMessage42= new OscMessage("/dataToLive9"); // oscillator 
@@ -684,16 +695,16 @@ void oscSend(){
   
   
  /*
-  myMessage30.add(decompte[11]);
-  myMessage31.add(decompte[10]);
-  myMessage32.add(decompte[9]);
-  myMessage33.add(decompte[8]);
-  myMessage34.add(decompte[7]);
-  myMessage35.add(decompte[6]);
-  myMessage36.add(decompte[5]);
-  myMessage37.add(decompte[4]);
-  myMessage38.add(decompte[3]);
-  myMessage39.add(decompte[2]);
+  myMessage30.add(trigModPos[11]);
+  myMessage31.add(trigModPos[10]);
+  myMessage32.add(trigModPos[9]);
+  myMessage33.add(trigModPos[8]);
+  myMessage34.add(trigModPos[7]);
+  myMessage35.add(trigModPos[6]);
+  myMessage36.add(trigModPos[5]);
+  myMessage37.add(trigModPos[4]);
+  myMessage38.add(trigModPos[3]);
+  myMessage39.add(trigModPos[2]);
   */
   
 //  osctrignote
@@ -722,7 +733,16 @@ void oscSend(){
   myMessage34.add(TrigmodPos[7]);
   myMessage35.add(TrigmodPos[6]);
   */
-  myMessage36.add(TrigmodPos[5]);
+  int trigMute;
+  trigMute=1;
+
+if (TrigmodPos[0]==0|| TrigmodPos[1]==0 || TrigmodPos[2]==0 || TrigmodPos[3]==0 || TrigmodPos[4]==0 || TrigmodPos[5]==0){
+trigMute= 0;
+   } 
+   
+  text ( " trigMute " + trigMute,  100, 100);
+/// myMessage36.add(TrigmodPos[5]);
+  myMessage36.add(trigMute);
   myMessage37.add(TrigmodPos[4]);
   myMessage38.add(TrigmodPos[3]);
   myMessage39.add(TrigmodPos[2]);

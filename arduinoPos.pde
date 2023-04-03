@@ -107,7 +107,9 @@ void arduinoPos() {
   String counterNoMarked = rev[5]+","+rev[4]+","+rev[3]+","+rev[2]+","+rev[1]+","+rev[0]+","; // rev[9]+","+rev[8]+","+rev[7]+","+rev[6]+","+
   // you have the number of revolution made by each oscillator
   String revolutionNoMarked = revolution[5]+","+revolution[4]+","+revolution[3]+","+revolution[2]+","+revolution[1]+","+revolution[0]+","; //revolution[9]+","+revolution[8]+","+revolution[7]+","+revolution[6]+","+
-
+ 
+   
+ 
   // =============== MAP ACCORDING LFO, CIRCULAR, PENDULAR PHASE To ADAPT IT TO the stepper motor
   // ===============* CIRCULAR MODE TO TRIG DATA ACCORDING POSITION *
   if (formerKeyMetro == '£'  || formerKeyMetro == '*' || formerKeyMetro == 'J' || formerKeyMetro == 's' || formerKeyMetro == '@' ) { //interPosition   || formerKeyMetro == 'c'
@@ -215,7 +217,7 @@ void arduinoPos() {
         } else  TrigmodPos[i]=1;
       } 
 
-       DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i]+ActualVirtualPosition[i];
+       DataToDueCircularVirtualPosition[i]=CircularVirtualPosition[i];//+ActualVirtualPosition[i];
        ActualVirtualPositionFromOtherMode[i]=DataToDueCircularVirtualPosition[i];
       }
      }

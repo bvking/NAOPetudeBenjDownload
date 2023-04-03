@@ -1,5 +1,6 @@
 int delayTimeToTrig4; //ms
 float signalToSplit4;
+String positionMov;
 
 void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
@@ -32,7 +33,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
      splitTimeLfo= int  (timeLfo%1000); 
     //  text (" splittimeLfo "  +  splitTimeLfo +   " oldSplitTimeLfo " + oldSplitTimeLfo, 300, -300);
-     text (" propagationLevel "  +  propagationLevel + " timeLfoTrigEvent" + delayTimeToTrig + " oscillatorBlocked " + oscillatorBlocked , width-width/4, -300);
+ 
+     text ( 
+       " ActualVirtualPosition[3] " + ActualVirtualPosition[3] + " propagationLevel "  +  propagationLevel + " timeLfoTrigEvent" + delayTimeToTrig + " oscillatorBlocked " + oscillatorBlocked , width-width/4, -300);
+
+ 
+
 
 
    text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400 );
@@ -100,24 +106,41 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
              delayTimeToTrig=100;
         //  key= '='; keyReleased();
           key = 'ç';
-         
-
           }
-      
+  
          if (measure==42){
-          //   key = '°';
+           key = '0';
            formerKeyMetro = '*';
-           delayTimeToTrig4=140;
-          
-
+           delayTimeToTrig4=140;     
           }
+           if (measure < 58 ){
+           positionMov = " premierePartie ";
+         }
+         else { positionMov = " dernierePartie " ; }
 
-
+         if (measure == 58 && beatPrecised == 6  ){
+          formerKeyMetro = '*';
+      
+          key= '='; keyReleased();
+        }
+        if (measure == 58 && beatPrecised == 7  ){
+            positionMov = " dernierePartie ";
+         key = '0'; keyReleased();
+           }
+         
+         int formerFrameTrigging;
+         formerFrameTrigging=frameCount;
+         
+         if (measure == 58 && beatPrecised == 8 ){ // && frameCount>formerFrameTrigging+1
+         //   key = 'y'; keyReleased();
+        key = 'Y';   
+      }
+        
+      if (  positionMov == " premierePartie "){
+      //   positionMov = " premierePartie ";
        if (measure<41 || measure>=42 ){
- 
 
-       
-        if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
+      if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
             oscillatorBlocked=0;
       timeToTrig=millis();
       propagationLevel=1;
@@ -133,8 +156,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        
          }
       
-      oscillatorBlocked=oscillatorBlocked%networkSize;
-    }
+       oscillatorBlocked=oscillatorBlocked%networkSize;
+      }
 
          if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4 ){  // 
           oscillatorBlocked=0;
@@ -147,7 +170,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           key = 'f';
          }
         if (measure>=41){ 
-          key = 'F'; //f
+     //***     key = 'F'; //f
            }
       oscillatorBlocked=oscillatorBlocked%networkSize;
    
@@ -166,15 +189,60 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       if (measure > 41)  {
           key = 'f';
          }
-         else  key = 'f';
+       else  key = 'f';
       }
+     }
+       }
+
+         if ( positionMov == " dernierePartie "  ){     
+      
+       if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
+            oscillatorBlocked=0;
+      timeToTrig=millis();
+      propagationLevel=1;
+      oscillatorChangingPropagation=true;
+       key = 'F';
+         }   
+
+
+       if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4+80 ){  // 
+          oscillatorBlocked=0;
+
+       timeToTrig=millis();
+       oscillatorChangingPropagation=true;
+      
+        if (measure>=41){ 
+      // key = 'd';
+           }
+        oscillatorBlocked=oscillatorBlocked%networkSize; 
+       }
+        
+      if (signalToSplit<0.5 && millis()> 0 && measure>1 && measure<600){  //  timeToTrig+delayTimeToTrig
+       oscillatorBlocked=5;
+        timeToTrig=millis();
+      propagationLevel=0;
+      oscillatorChangingPropagation=false;
+     // oscillatorBlocked=oscillatorBlocked-1;
+      if (oscillatorBlocked<=0) {
+      oscillatorBlocked=networkSize-1;
+      }
+      if (measure > 57)  {
+      //    key = 'F';
          }
+      }
+      }
+
+        text ( " positionMov " + positionMov +  " DataToDueCircularVirtualPosition[3] " + DataToDueCircularVirtualPosition[3] + " key " + key  
+       , width-width/4, -400);
 
     // keyPressed();
      phasePattern();
      oldSplitTimeLfo = splitTimeLfo; 
-   
-} 
+     } 
+
+
+
+
              
     /*
         if (formerKeyMetro == '$' && key == '='){
