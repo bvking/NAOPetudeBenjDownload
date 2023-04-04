@@ -464,17 +464,17 @@ float[] OldFrequency;
 float[] divideFrequency;
 
 int[] PendularVirtualPosition = new int[networkSize];
-int[] CircularVirtualPosition  = new int[networkSize];;
-int[] DataToDueCircularVirtualPosition  = new int[networkSize];;
-int[] ActualVirtualPosition  = new int[networkSize];;
-int[] ActualVirtualPositionFromOtherMode  = new int[networkSize];;
-int[] oldActualVirtualPosition  = new int[networkSize];;
-int[] PendularOldVirtualPosition  = new int[networkSize];;
-int[] CircularOldVirtualPosition  = new int[networkSize];;
-int[] PendularLeftVirtualPosition  = new int[networkSize];;
-int[] PendularOldLeftVirtualPosition  = new int[networkSize];;
-int[] PendularOldOldLeftVirtualPosition  = new int[networkSize];;
-int[] PendularOldOldOldLeftVirtualPosition  = new int[networkSize];;
+int[] CircularVirtualPosition  = new int[networkSize];
+int[] DataToDueCircularVirtualPosition  = new int[networkSize];
+int[] ActualVirtualPosition  = new int[networkSize];
+int[] ActualVirtualPositionFromOtherMode  = new int[networkSize];
+int[] oldActualVirtualPosition  = new int[networkSize];
+int[] PendularOldVirtualPosition  = new int[networkSize];
+int[] CircularOldVirtualPosition  = new int[networkSize];
+int[] PendularLeftVirtualPosition  = new int[networkSize];
+int[] PendularOldLeftVirtualPosition  = new int[networkSize];
+int[] PendularOldOldLeftVirtualPosition  = new int[networkSize];
+int[] PendularOldOldOldLeftVirtualPosition  = new int[networkSize];
 
 int[] revolution;
 int[] pseudoRevolutionTodeblock;
@@ -826,7 +826,7 @@ void setup() {
     phaseMappedFollow= new float [nbBall];
     ActualVirtualPosition[i]= 0;
 
-    for (int j = 2; j < nbMaxDelais; j++)
+    for (int j = 0; j < nbMaxDelais; j++)
       phases[i][j] = -PI;      
   }
 

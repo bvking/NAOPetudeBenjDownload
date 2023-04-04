@@ -89,7 +89,7 @@ void draw() {
  println ("  encodeur[0] " +  encodeur[0] + " v1 " + v1 + " v2 " + v2 + " v3 " + v3 + " v4 " + v4 +  " v5 " + v5); 
 
 
-   
+  showArray (encodeur);
  // printArray(encodeur);
   background(0);
 //  printDataOnScreen();
@@ -128,12 +128,11 @@ void draw() {
     print (" keyMode ",  keyMode );
     }
 
-      if (moveKeys[8]==true && moveKeys[10]==true){ // CONTROL && r pressed
+    if (moveKeys[8]==true && moveKeys[10]==true){ // CONTROL && r pressed
     keyMode = " addSignalOneAndTwoQuater "  ;
   //  formerKeyMetro = '*';
     print (" keyMode ",  keyMode );
     }
-    
         
     if (moveKeys[8]==true && moveKeys[3]==true){ // CONTROL && q pressed
     keyMode = " followDirectLfo " ;
@@ -182,12 +181,12 @@ void draw() {
     formerKeyMetro = '*';
   }
 
-       if (moveKeys[8]==true && moveKeys[12]==true){ // ALT & v
+   if (moveKeys[8]==true && moveKeys[12]==true){ // ALT & v
     keyMode = " trigEventWithAbletonSignal " ;
   //  formerKeyMetro = '*';
   }
     
-     if (key == '%' ){ 
+   if (key == '%' ){ 
     keyMode = " phasePattern " ;
    
     
@@ -686,13 +685,15 @@ for (int i = 0; i < networkSize; i++) {
  }
 
 //********************* trigEffectToAbletonLive
-
-              if ( oldEncodeur[0] != encodeur[0] ){   
+trigEffectToAbletonLive();
+/*
+      if ( oldEncodeur[0] != encodeur[0] ){   
       trigEffect=true;
       textSize(150);
       timeToTrigSomething=millis();
       trigEffectBis=true;
-      encodeur[1]= 1;
+    //  encodeur[1]= 1;
+    fromEncodeurToLive[0] = 1;
   }
      else trigEffect=false;
 
@@ -707,9 +708,16 @@ for (int i = 0; i < networkSize; i++) {
     //  trigEffectBis=false;
      // trigEffect=false;
       // send on ableton live
-      encodeur[1]= 0;
+    //  encodeur[1]= 0;
+     fromEncodeurToLive[0] = 0;
     }
-   oldEncodeur[0]= encodeur[0];
+
+     oldEncodeur[0]= encodeur[0];
+
+*/
+
+
+
 
 
 /*
@@ -721,22 +729,23 @@ for (int i = 0; i < networkSize; i++) {
       encodeur[1]= 0;
     }
 */
-/*
-      text  ("  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, -100);
+ textSize (50);
 
-    text  (" encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, -300);
-    text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, -200);
+    text  ("  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 100);
+    text  (" encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 300);
+    text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 200);
    
 
  for (int i = 0; i < networkSize; i++) {
 //  text ( "metro" + metroPhase[i] + " actual Other" + i + " " + ActualVirtualPositionFromOtherMode[i] + " PendularVirtualPosition " + i + " " + PendularVirtualPosition[i] + " virtual " + i + " " + VirtualPosition[i] + " actual " + i + " " + ActualVirtualPosition[i] + " data " + i + " " + DataToDueCircularVirtualPosition[i], 800, 1600- 100*i );
   }
-*/
 
-  text ( " signal3 " + signal[3] , 500, 800);
-   text ( " signal4 " + signal[4] , 500, 900);
-    text ( " signal5 " + signal[5] , 500, 1000);
-     text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key , 500, 1100);
+    textSize (50);
+
+     text ( " signal3 " + signal[3] , 300, 800);
+     text ( " signal4 " + signal[4] , 300, 900);
+     text ( " signal5 " + signal[5] , 300, 1000);
+     text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key , 300, 1100);
 
 
 

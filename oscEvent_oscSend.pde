@@ -555,21 +555,22 @@ void oscSend(){
 
  
 
-  OscMessage myMessage60= new OscMessage("/encodeur0"); // oscillator SEND ACCELERATION
-  OscMessage myMessage61= new OscMessage("/encodeur1"); // oscillator 
-  OscMessage myMessage62= new OscMessage("/encodeur2"); // oscillator 
-  OscMessage myMessage63= new OscMessage("/encodeur3"); // oscillator 
-  OscMessage myMessage64= new OscMessage("/encodeur4"); // oscillator 
-  OscMessage myMessage65= new OscMessage("/encodeur5"); // oscillato
+  OscMessage myMessage60= new OscMessage("/fromEncodeurToLive0"); // oscillator SEND ACCELERATION
+  OscMessage myMessage61= new OscMessage("/fromEncodeurToLive1"); // oscillator 
+  OscMessage myMessage62= new OscMessage("/fromEncodeurToLive2"); // oscillator 
+  OscMessage myMessage63= new OscMessage("/fromEncodeurToLive3"); // oscillator 
+  OscMessage myMessage64= new OscMessage("/fromEncodeurToLive4"); // oscillator 
+  OscMessage myMessage65= new OscMessage("/fromEncodeurToLive5"); // oscillato
   
  // oldEncodeur[0]= encodeur[0];
  // encodeur[0]=mouseY*2;
-  myMessage60.add(abs (map (encodeur[0], 0, 800, 0, 127)));  // send encodeur
-  myMessage61.add(encodeur[1]);
-  myMessage62.add(encodeur[2]);
-  myMessage63.add(encodeur[3]);
-  myMessage64.add(encodeur[4]);
-  myMessage65.add(encodeur[5]);
+ // myMessage60.add(abs (map (encodeur[0], 0, 800, 0, 127)));  // send encodeur
+  myMessage60.add(fromEncodeurToLive[0]);
+  myMessage61.add(fromEncodeurToLive[1]);
+  myMessage62.add(fromEncodeurToLive[2]);
+  myMessage63.add(fromEncodeurToLive[3]);
+  myMessage64.add(fromEncodeurToLive[4]);
+  myMessage65.add(fromEncodeurToLive[5]);
   
 
 
@@ -717,6 +718,8 @@ void oscSend(){
   result = multiMatchData(0, 1, TrigmodPos.clone());
   TrigmodPos=result;
   showArray(result);
+
+    } 
   
  if ( keyMode ==  " followSignalLfo "){
     print (" trigNoteOnlyOnceFollowSignalLfo "); 
@@ -739,7 +742,7 @@ void oscSend(){
 if (TrigmodPos[0]==0|| TrigmodPos[1]==0 || TrigmodPos[2]==0 || TrigmodPos[3]==0 || TrigmodPos[4]==0 || TrigmodPos[5]==0){
 trigMute= 0;
    } 
-   
+
   text ( " trigMute " + trigMute,  100, 100);
 /// myMessage36.add(TrigmodPos[5]);
   myMessage36.add(trigMute);
@@ -747,7 +750,7 @@ trigMute= 0;
   myMessage38.add(TrigmodPos[3]);
   myMessage39.add(TrigmodPos[2]);
  // println (" NOTE TRIGGED FROM OSCSEND ");
-} 
+ 
   /*
   myMessage40.add(dataToLive[11]);  // Trig on the right but there are bugs in pendular way
   myMessage41.add(dataToLive[10]);

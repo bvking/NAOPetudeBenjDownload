@@ -305,8 +305,8 @@ void phasePattern() { // need standard mode to be trigged
   //    net.naturalFrequency[i]= net.naturalFrequency[i+1];
     }
 
-     net.phase[networkSize-1]=  net.oldPhase[0];
-     netPhaseBase[networkSize-1]=  net.oldPhase[0];
+    net.phase[networkSize-1]=  net.oldPhase[0];
+    netPhaseBase[networkSize-1]=  net.oldPhase[0];
     net.naturalFrequency[networkSize-1]= OldFrequency[0];
    
   }
@@ -1033,7 +1033,11 @@ void phasePattern() { // need standard mode to be trigged
     }
   } else if (key == 'Y') { 
     println("y= Increase last frequencies + 0.05*i ");
+       println("y= Increase last frequencies + 0.05*i ");
+
     for (int i = 0; i < networkSize; i++) {   
+      println("y= Increase last frequencies + 0.05*i ");
+       println("y= Increase last frequencies + 0.05*i ");
       net.naturalFrequency[i] = net.naturalFrequency[i]*(1.10);
       key='#';
       printSummary(i);

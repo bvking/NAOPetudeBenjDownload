@@ -116,25 +116,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            if (measure < 58 ){
            positionMov = " premierePartie ";
          }
-         else { positionMov = " dernierePartie " ; }
+         else if (measure >= 58  && measure <=64) { positionMov = " dernierePartie " ; }
+         else if (measure >= 65  ) { positionMov = " PartieFinal " ; }
 
-         if (measure == 58 && beatPrecised == 6  ){
-          formerKeyMetro = '*';
-      
-          key= '='; keyReleased();
-        }
-        if (measure == 58 && beatPrecised == 7  ){
-            positionMov = " dernierePartie ";
-         key = '0'; keyReleased();
-           }
-         
-         int formerFrameTrigging;
-         formerFrameTrigging=frameCount;
-         
-         if (measure == 58 && beatPrecised == 8 ){ // && frameCount>formerFrameTrigging+1
-         //   key = 'y'; keyReleased();
-        key = 'Y';   
-      }
+       
         
       if (  positionMov == " premierePartie "){
       //   positionMov = " premierePartie ";
@@ -227,20 +212,73 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       oscillatorBlocked=networkSize-1;
       }
       if (measure > 57)  {
-      //    key = 'F';
+          key = 'F';
          }
       }
-      }
+      
 
         text ( " positionMov " + positionMov +  " DataToDueCircularVirtualPosition[3] " + DataToDueCircularVirtualPosition[3] + " key " + key  
        , width-width/4, -400);
 
-    // keyPressed();
+ 
+
+       if (measure == 58 && beatPrecised == 6  ){
+          formerKeyMetro = '*';
+      
+          key= '='; keyReleased();
+        }
+
+        if (measure == 58 && beatPrecised == 7  ){
+            positionMov = " dernierePartie ";
+         key = '0'; keyReleased();
+           }
+         
+         int formerFrameTrigging;
+         formerFrameTrigging=frameCount;
+         
+         if (measure == 58 && beatPrecised == 8 ){ // && frameCount>formerFrameTrigging+1
+         //   key = 'y'; keyReleased();
+          key = 'y';   
+      }
+   } // end second partie
+
+      if ( positionMov == " partieFinal "  ){  
+    if (measure == 66 && beatPrecised == 1 ){ // && frameCount>formerFrameTrigging+1
+          key= 0;
+      
+      }
+     if (measure == 66 && beatPrecised == 2 ){ // && frameCount>formerFrameTrigging+1
+          key = 'y';   
+             key = 'y';   
+                key = 'y';   
+                   key = 'y';   
+      }
+
+           if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
+        //    oscillatorBlocked=0;
+      timeToTrig=millis();
+      propagationLevel=1;
+      oscillatorChangingPropagation=true;
+              }
+
+
+         if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4 ){  // 
+        //  oscillatorBlocked=5;
+
+       timeToTrig=millis();
+       oscillatorChangingPropagation=true;
+         key = 'r';
+          
+        oscillatorBlocked=oscillatorBlocked%networkSize; 
+       }
+       }
+
+      
      phasePattern();
      oldSplitTimeLfo = splitTimeLfo; 
      } 
 
-
+  
 
 
              
