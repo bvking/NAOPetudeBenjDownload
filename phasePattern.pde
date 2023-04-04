@@ -711,10 +711,11 @@ void phasePattern() { // need standard mode to be trigged
 
       //    net.phase[i] +=  -(i+2)%PI/6; // mieux
     
-     net.phase[i] += (i*TWO_PI/5)%PI/10; // pas en mode circular
+     // net.phase[i] += (i*TWO_PI/5)%PI/(networkSize); // pas en mode circular ? 
+     net.phase[i] += (i*TWO_PI/networkSize)%PI/(networkSize*3); // pas en mode circular ? 
      //net.phase[i] += (i*TWO_PI/10/5); //  en mode circular?
 
-      //    net.phase[i] -=  +(i+1)%PI/6; 
+      //    net.phase[i] -=  +(i+1)%PI/6;
 
      // net.phase[i]=  net.phase[i]%(TWO_PI/1) ; // bien en pendulaire?
  
@@ -1001,18 +1002,26 @@ void phasePattern() { // need standard mode to be trigged
   } else if (key == 'ç') {
     if (circularMov==true) {
 
+    float [] realign = new float [networkSize];
       for (int i = 0; i < networkSize; i++) {
-        net.phase[i]= 0;
+       realign[i] = net.phase[i]%TWO_PI;
+       net.phase[i]=  net.phase[i] - realign[i];
+       
       }
     }
+
     if (circularMov==false) {
       println(" Align oscillator vertically to the down  ");
-      formerKey = 'o';
-      for (int i = 0; i < networkSize; i++) {
-        //   net.phase[i]=-PI+0.5*PI+PI/12; // position 0+PI/2  
-        net.phase[i]= 0+PI/2  ; // position 0+PI/2  
+      //formerKey = 'o';
 
-        //     net.phase[i]=net.phase[i]+PI/3;    // position 0+PI/2   add 90° turning in CW
+        float [] realign = new float [networkSize];
+      for (int i = 0; i < networkSize; i++) {
+       realign[i] = net.phase[i]%TWO_PI;
+       net.phase[i]=  net.phase[i] - realign[i];
+   
+      //  net.phase[i]= 0+PI/2  ; // position 0+PI/2  
+
+  
         printSummary(i);
       }
     }
