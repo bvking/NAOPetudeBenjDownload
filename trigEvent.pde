@@ -242,7 +242,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       }
    } // end second partie
 
-      if ( positionMov == " partieFinal "  ){  
+      if ( positionMov == " partieFinalTruc "  ){  
     if (measure == 66 && beatPrecised == 1 ){ // && frameCount>formerFrameTrigging+1
           key= 0;
       
@@ -267,7 +267,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
        timeToTrig=millis();
        oscillatorChangingPropagation=true;
-         key = 'r';
+      //   key = 'r';
           
         oscillatorBlocked=oscillatorBlocked%networkSize; 
        }

@@ -1,3 +1,5 @@
+//String [] portsUSB = new string [10];
+
 void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int computeData, int eraseProcessingData){  // dataMarkedToTeensyArevoir
 
        dataFromMode ="<"
@@ -26,27 +28,44 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
      else dataTransformed = " dataComputeInTeensy from mode ";
      println(frameCount + ": " + dataTransformed +  keyMode + " " +   dataFromMode );
   
-    teensyport.write(dataFromMode);
+ 
+  // String[] m1 = match(portUSB, " teensy ");
 
-  
+   // if (m1 == null) {
+   // teensyport.write(dataFromMode);
+   //println ( " noPortPlugged " + portsUSB[0]); 
+   //}
 
-
-      }
+   // teensyport.write(dataFromMode);
+  }
 
   void setPort(){
 
-  String[] ports = Serial.list();
+   String[] ports = Serial.list();
+   
+ 
+   String[] portsUSB = { "GA", "FL", "NC", "po", "po", "po" };
+arrayCopy(ports, portsUSB);
+println(portsUSB);
+// Prints updated array contents to the console:
+// [0] "OH"
+// [1] "IN"
+// [2] "MI"
   printArray(Serial.list());
+  printArray (portsUSB);
+
+
+
 
     //*************** WITH TEENSY connected
- // teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey
-  //  teensyport = new Serial(this, ports[0], 115200);// si port non connecte Catalina ou connecté Monterey
-    teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
+  teensyport = new Serial(this, ports[1], 115200);// si port non connecte Monterey mais buetooth ouvert
+ //   teensyport = new Serial(this, ports[0], 115200);// si port non connecte Catalina 
+  //  teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
   //*************** WITHOUT ENODEER connected
    // encoderReceiveUSBport101 = new Serial(this, Serial.list()[3], 1000000);
-   encoderReceiveUSBport101 =  new Serial(this,ports[3], 1000000); // si port connecté Monterey
+ //  encoderReceiveUSBport101 =  new Serial(this,ports[3], 1000000); // si port connecté Monterey
 
   // Read bytes into a buffer until you get a linefeed (ASCII 10):
-    encoderReceiveUSBport101.bufferUntil('\n');
+ //   encoderReceiveUSBport101.bufferUntil('\n');
 
  }

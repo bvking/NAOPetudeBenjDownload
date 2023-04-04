@@ -711,7 +711,8 @@ void phasePattern() { // need standard mode to be trigged
 
       //    net.phase[i] +=  -(i+2)%PI/6; // mieux
     
-      net.phase[i] += (i*TWO_PI/5)%PI/10; // 
+     net.phase[i] += (i*TWO_PI/5)%PI/10; // pas en mode circular
+     //net.phase[i] += (i*TWO_PI/10/5); //  en mode circular?
 
       //    net.phase[i] -=  +(i+1)%PI/6; 
 
