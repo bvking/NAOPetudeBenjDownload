@@ -163,7 +163,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       }
      
     
-      if (signalToSplit<0.5 && millis()> 0 && measure>1 && measure<600){  //  timeToTrig+delayTimeToTrig
+      if (signalToSplit<0.5 && millis()> timeToTrig+delayTimeToTrig4+20 && measure>1 && measure<600){  //  timeToTrig+delayTimeToTrig
        oscillatorBlocked=0;
         timeToTrig=millis();
       propagationLevel=0;
@@ -183,7 +183,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          if ( positionMov == " dernierePartie "  ){     
       
        if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
-            oscillatorBlocked=0;
+      oscillatorBlocked=0;
       timeToTrig=millis();
       propagationLevel=1;
       oscillatorChangingPropagation=true;
@@ -226,7 +226,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        if (measure == 58 && beatPrecised == 6  ){
           formerKeyMetro = '*';
       
-          key= '='; keyReleased();
+       //   key= '='; keyReleased();
         }
 
         if (measure == 58 && beatPrecised == 7  ){
