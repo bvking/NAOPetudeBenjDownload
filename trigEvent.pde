@@ -85,7 +85,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      signalToSplit4 = map ( signal[4], 0, 1, 0, 1);
 
      delayTimeToTrig=140; //ms
-     delayTimeToTrig4=70;
+     delayTimeToTrig4=120;
      
          if (beatPrecised==2 && measure==1){
            formerKeyMetro = '$';
@@ -99,26 +99,29 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          }
 
         if (measure==1){
-           delayTimeToTrig4=70;
+           delayTimeToTrig4=120;
           
          }
-           if (measure==41 && beatPrecised == 3 ){
+
+        if (measure==41 && beatPrecised == 3 ){
            delayTimeToTrig4=140;
-             delayTimeToTrig=100;
+           delayTimeToTrig=100;
         //  key= '='; keyReleased();
           key = 'ç';
           }
   
-         if (measure==42){
+        if (measure==42 && beatPrecised == 1){
            key = '0';
            formerKeyMetro = '*';
            delayTimeToTrig4=140;     
           }
-           if (measure < 58 ){
+
+        if (measure < 58 ){
            positionMov = " premierePartie ";
          }
-         else if (measure >= 58  && measure <=64) { positionMov = " dernierePartie " ; }
-         else if (measure >= 65  ) { positionMov = " PartieFinal " ; }
+
+        else if (measure >= 58  && measure <=64) { positionMov = " dernierePartie " ; }
+        else if (measure >= 65  ) { positionMov = " PartieFinal " ; }
 
        
         
@@ -218,9 +221,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       }
       
 
-        text ( " positionMov " + positionMov +  " DataToDueCircularVirtualPosition[3] " + DataToDueCircularVirtualPosition[3] + " key " + key  
-       , width-width/4, -400);
-
+      
  
 
        if (measure == 58 && beatPrecised == 6  ){
@@ -243,12 +244,18 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       }
    } // end second partie
 
-      if ( positionMov == " partieFinalTruc "  ){  
+      if ( positionMov == " partieFinal "  ){  
     if (measure == 66 && beatPrecised == 1 ){ // && frameCount>formerFrameTrigging+1
           key= 0;
       
       }
      if (measure == 66 && beatPrecised == 2 ){ // && frameCount>formerFrameTrigging+1
+          key = 'y';   
+             key = 'y';   
+                key = 'y';   
+                   key = 'y';   
+      }
+    if (measure == 66 && beatPrecised == 3 ){ // && frameCount>formerFrameTrigging+1
           key = 'y';   
              key = 'y';   
                 key = 'y';   
@@ -274,7 +281,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        }
        }
 
-      
+       textSize(75);
+
+        text ( " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key  
+       , width-width, -400);
+
      phasePattern();
      oldSplitTimeLfo = splitTimeLfo; 
      } 
