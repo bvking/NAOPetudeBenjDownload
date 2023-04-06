@@ -156,7 +156,7 @@ void arduinoPos() {
           }
         } 
 
-      if (  keyMode == " phasePattern " ) {
+      if (  keyMode == " phasePatternPlusTard " ) {
            for (int i = 0; i < networkSize; i++) {
      //   VirtualPosition[i]= ActualVirtualPosition[i];   // when you change mode of movement, you add last position  DataToDueCircularVirtualPosition[i] +
       // =============== MAP PHASE To ADAPT IT TO the stepper motor    // =============== TRIG 0 when oscillator pass THROUG 0:  No effect on positions datas given to teensyport
@@ -536,10 +536,10 @@ void arduinoPos() {
 
    if (keyMode!= " phasePattern ") {
      if (measure <17) {
-      send24DatasToTeensy6motors(6, 3, -3, -1);
+      send24DatasToTeensy6motors(4, 3, -3, -1);
   }
   else
-      send24DatasToTeensy6motors(8, 3, -3, -1);
+      send24DatasToTeensy6motors(4, 3, -3, -1);
 
     }
 
