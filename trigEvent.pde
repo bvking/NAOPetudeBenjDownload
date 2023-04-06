@@ -136,7 +136,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       oscillatorChangingPropagation=true;
       if (measure<41){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
-        key = 'd';
+      //  key = 'd';
+        key = 'i';
          }
      
       if (measure>=41 && measure<=50 ){ 
@@ -157,6 +158,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         if (measure<41){ 
         //  oscillatorBlocked=oscillatorBlocked+1;
           key = 'd';
+      // key = 'i';
+
          }
         if (measure>=41){ 
      //***     key = 'F'; //f
@@ -176,9 +179,9 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       oscillatorBlocked=networkSize-1;
       }
       if (measure > 41)  {
-          key = 'd';
+       //   key = 'd';
          }
-       else  key = 'i';
+     //  else  key = 'i';
       }
      }
        }
