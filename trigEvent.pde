@@ -84,7 +84,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      signalToSplit = map ( signal[5], 0, 1, 0, 1);
      signalToSplit4 = map ( signal[4], 0, 1, 0, 1);
 
-     delayTimeToTrig=140; //ms
+     delayTimeToTrig=120; //ms
      delayTimeToTrig4=120;
      
          if (beatPrecised==2 && measure==1){
@@ -157,7 +157,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       oscillatorChangingPropagation=true;
         if (measure<41){ 
         //  oscillatorBlocked=oscillatorBlocked+1;
-          key = 'd';
+       //   key = 'd';
       // key = 'i';
 
          }
