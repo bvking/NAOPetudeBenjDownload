@@ -3,9 +3,16 @@ void trigBeatWithMeasure()
  {
  //   beatTrigged=false;
  //   beatPrecisedTrigged=false; 
+   if (formerBeatPrecised!=beatPrecised) {
+         beatPrecisedTrigged=true;
+  }
+  else  beatPrecisedTrigged=false; 
+
    if (formerMeasure!=measure) {
     //   background (127, 50, 50);
     beatTrigged=true;
+
+   
     
     
     

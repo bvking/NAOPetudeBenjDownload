@@ -87,14 +87,17 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      delayTimeToTrig=120; //ms
      delayTimeToTrig4=120;
      
-         if (beatPrecised==2 && measure==1){
+         if (beatPrecised==2 && measure==1 && beatPrecisedTrigged==true){
+           keyCode= CONTROL;
            formerKeyMetro = '$';
-           key = 'd';
+          // key = 'd';
+          //key = 'f'; key = 'f'; key = 'f';
           }
         
         
-         if (measure==16 ){
+         if (measure==18 ){
           // formerKeyMetro = '*';
+         //  keyCode= CONTROL;
            key = '0';
          }
 
@@ -286,7 +289,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
        textSize(75);
 
-        text ( " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key  
+        text (" beatTrigged " + beatTrigged +" beatPrecisedTrigged " + beatPrecisedTrigged + " beatPrecised " + beatPrecised +  "formerBeatPrecised " + formerBeatPrecised + " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key  
        , width-width, -400);
 
      phasePattern();
