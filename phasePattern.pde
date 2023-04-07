@@ -21,8 +21,6 @@ void phasePattern() { // need standard mode to be trigged
  if  (   keyMode != " truc "  ) {
       if  (   keyMode != " truc " ) {
 
-        
-
     //     splitIncomingSignal();
          /*
          if (oscillatorChangingPropagation==true)  {key = 'f';}
@@ -31,8 +29,6 @@ void phasePattern() { // need standard mode to be trigged
         */
     //     text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
       
-
-
   for (int i = 0; i < (networkSize); i++) { 
     {
       OldFrequency[i]=  net.naturalFrequency[i];  //************************************ SET LAST FREQUENCIES as OLD FREQUENCIES
@@ -44,8 +40,7 @@ void phasePattern() { // need standard mode to be trigged
     key ='#';
     //  pendular=5;
   }
- 
-                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                          
 
   //********** ********** ********** ********** ********** ********** ********** INCREASE FREQUENCIES in $ mode PENDULAR PATTERN
  //********** ********** ********** ********** ********** ********** ********** TRIG PATTERN SHIFTING IN KEYREASED
@@ -873,11 +868,8 @@ void phasePattern() { // need standard mode to be trigged
     }
     }
 
-
-    //****************** To TEST when frequencies are set at 0
     else if (keyCode == CONTROL) { 
     println("INCREASE phases with special modulo   "); //P$ 
-    //else if (key == 'π') { println("INCREASE phases with special modulo   "); //P$ 
 
     for (int i = 0; i < networkSize; i++) {
 
@@ -885,47 +877,20 @@ void phasePattern() { // need standard mode to be trigged
     //  net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-3-i)); // TWOPI/10--> 10 hit and oscillator9 not affected thanks to -3 in second part of equation 
     //** net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
-     net.phase[i]+=   (PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
-
+    // net.phase[i]+=   (PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
+    //  net.phase[i]+=   (PI/(networkSize)*(networkSize-1-i)); // front 
+        net.phase[i]+=   3*PI/(networkSize)*i; // behind
 
       //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
-    //  net.phase[i]=  net.phase[i]%(TWO_PI/1); // try without dataMarkedToTeensyJo
 
-    //  for (int i = 0; i < networkSize; i++) {
-      
-      if (net.phase[i] >=  0) { // number of revLfoolution is even and rotation is clock wise   
-        DataToDueCircularVirtualPosition[i]= int (map (net.phase[i], 0, TWO_PI, 0, numberOfStep)); //
-        }
-      
-     }
-   
-      keyCode = BACKSPACE;
-    
-    int speedLocalDelta=4; 
-    int driverOnOff=3;
-    int dataToTeensyNoJo=-3; // trig noJoe in Teensy
+      keyCode=BACKSPACE;
+ 
 
-    String dataMarkedToTeensyPhasePattern  ="<" //   
-
-     
-     + DataToDueCircularVirtualPosition[5]+","+DataToDueCircularVirtualPosition[4]+","+DataToDueCircularVirtualPosition[3]+","+DataToDueCircularVirtualPosition[2]+","
-     + DataToDueCircularVirtualPosition[1]+","+DataToDueCircularVirtualPosition[0]    //+          ","+ 0 + ","+ 0","+ 0","+ 0 +","
-    
-     +  speedLocalDelta + ","
-      // + driverOnOff +","+dataToTeensyNoJo+","+decompte[8]+","+decompte[7]+","+decompte[6]+","
-     +decompte[5]+","+decompte[4]+","+decompte[3]+","+decompte[2]+"," // to manage 12 note +decompte[1]+","+decompte[0]+ ","
-
-      +  decompte[1]+"," +cohesionCounterLow +","+ cohesionCounterHigh +","+ int (map (LevelCohesionToSend, 0, 1, 0, 100))+">";    
-
-    println(frameCount + ": " +  " dataMarkedToTeensyPhasePattern " + ( dataMarkedToTeensyPhasePattern ));
-   // teensyport.write(dataMarkedToTeensyPhasePattern); // Send data to Teensy. only the movement
-
-
+    }
   }
 
 
- 
-  else if (key == 'P') { 
+    else if (key == 'P') { 
     println("INCREASE phases with special modulo P$   "); //P$ 
     for (int i = 0; i < networkSize; i++) {
 
@@ -945,7 +910,7 @@ void phasePattern() { // need standard mode to be trigged
     println("INCREASE phases with 0.5   "); //
     for (int i = 0; i < networkSize; i++) {
       //       net.phase[i] += QUARTER_PI/2 * net.phase[1*(networkSize-1-i)] ;//
-      net.phase[i] += QUARTER_PI/2 * net.phase[i] ;//
+      net.phase[i] =net.phase[i] +  QUARTER_PI/2;//
 
       //      net.phase[i] = net.phase[i] - QUARTER_PI  i;
    //   net.phase[i]=  net.phase[i]%TWO_PI;
@@ -967,39 +932,27 @@ void phasePattern() { // need standard mode to be trigged
       //   netPhaseBase[i] -= PI/32 * netOldPhaseBase[i] ;//
       //   netPhaseBase[i] -= PI/8 * netPhaseBase[i] ;//OK
       
-          net.phase[i] -=net.phase[i]- PI/8;
-   
-  /*   
-      if  (net.phase[i]<PI/2) { 
-        net.phase[i] = PI/10*net.phase[i];// effet torune à l'envers? 
+          net.phase[i] =net.phase[i]- QUARTER_PI/8;
 
-        //      net.phase[i] =-  (net.phase[i]-QUARTER_PI/2 )+ PI/2;// effet torune à l'envers?
-        net.phase[i]=  net.phase[i]%-PI/2- PI/2;// COME BACK TO MIDDLE
-      } else if (net.phase[i]>PI/2) { 
-        net.phase[i] = PI/10*net.phase[i];// effet torune à l'envers? 
-
-        //      net.phase[i] =-  (net.phase[i]-QUARTER_PI/2 )+ PI/2;// effet torune à l'envers?
-        net.phase[i]=  net.phase[i]%-PI/2+ PI/2;// COME BACK TO MIDDLE
-      }
-   */   
-      //      netPhaseBase[i] -= averagePhase* netOldPhaseBase[i] ;// 
-      //  netPhaseBase[i] -= PI/8 * netPhaseBase[i]* averagePhase ;//
       printSummary(i);
       key='#';
     } 
   }   
   // ****************** ALIGNEMENT of PHASES --- thus, phases alignement depend of coupling.
 
-  else if (key == '9')//9$
+  else if (key == '9' && circularMov==true )//9$
 
   { 
+
     println(" Align oscillator vertically to the top  ");
     for (int i = 0; i < networkSize; i++) {
       net.phase[i]= 0-PI/2; 
       //      net.phase[i]= 0; 
       printSummary(i);
     }
-  } else if (key == 'ç') {
+  } 
+  
+    else if (key == 'ç') {
     if (circularMov==true) {
 
     float [] realign = new float [networkSize];
@@ -1021,7 +974,6 @@ void phasePattern() { // need standard mode to be trigged
    
       //  net.phase[i]= 0+PI/2  ; // position 0+PI/2  
 
-  
         printSummary(i);
       }
     }
@@ -1060,7 +1012,6 @@ void phasePattern() { // need standard mode to be trigged
       printSummary(i);
     }
   } 
-
 
   //************************** CHANGE THE WAY OF ROTATION O$
   else if (key == 'o') 

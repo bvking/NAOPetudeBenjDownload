@@ -664,9 +664,7 @@ for (int i = 0; i < networkSize; i++) {
     //  mouseX= (int) polarToCartesionX;
     //  mouseY= (int) polarToCartesionY;
 
-
-
-      println ( " polarToCartesionX " + polarToCartesionX + " polarToCartesionY " + polarToCartesionY + " newPosF[networkSize-1] " + newPosF[networkSize-1] );
+   println ( " polarToCartesionX " + polarToCartesionX + " polarToCartesionY " + polarToCartesionY + " newPosF[networkSize-1] " + newPosF[networkSize-1] );
 
 
 
@@ -688,70 +686,7 @@ for (int i = 0; i < networkSize; i++) {
 
 //********************* trigEffectToAbletonLive
 trigEffectToAbletonLive();
-/*
-      if ( oldEncodeur[0] != encodeur[0] ){   
-      trigEffect=true;
-      textSize(150);
-      timeToTrigSomething=millis();
-      trigEffectBis=true;
-    //  encodeur[1]= 1;
-    fromEncodeurToLive[0] = 1;
-  }
-     else trigEffect=false;
 
-     if (trigEffectBis==true && beatTrigged==true ){
-      beginMeasure=measure;
-      textSize(400); 
-      trigEffectBis=false;  
-  }
-
-  if ( measure==beginMeasure+2 ){   
-      textSize (200);
-    //  trigEffectBis=false;
-     // trigEffect=false;
-      // send on ableton live
-    //  encodeur[1]= 0;
-     fromEncodeurToLive[0] = 0;
-    }
-
-     oldEncodeur[0]= encodeur[0];
-
-*/
-
-
-
-
-
-/*
-    if ( trigEffectBis==true && millis()>timeToTrigSomething+4000 ){   
-      textSize (200);
-      trigEffectBis=false;
-      trigEffect=false;
-      // send on ableton live
-      encodeur[1]= 0;
-    }
-*/
- textSize (50);
-
-    text  ("  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 100);
-    text  (" encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 300);
-    text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 200);
-   
-
- for (int i = 0; i < networkSize; i++) {
-//  text ( "metro" + metroPhase[i] + " actual Other" + i + " " + ActualVirtualPositionFromOtherMode[i] + " PendularVirtualPosition " + i + " " + PendularVirtualPosition[i] + " virtual " + i + " " + VirtualPosition[i] + " actual " + i + " " + ActualVirtualPosition[i] + " data " + i + " " + DataToDueCircularVirtualPosition[i], 800, 1600- 100*i );
-  }
-
-    textSize (50);
-
-     text ( " signal3 " + signal[3] , 300, 800);
-     text ( " signal4 " + signal[4] , 300, 900);
-     text ( " signal5 " + signal[5] , 300, 1000);
-     text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key , 300, 1100);
-
-
-
- 
  
  //**************   END MODE SETTING   *************************
 
@@ -1647,10 +1582,11 @@ void recordFrame() {
     key = '9'; // aligne les ballee
      for (int i = 0; i < networkSize; i++)  {
      // DataToDueCircularVirtualPosition[i]=0;
+        println ( " send24datasFromRecordFrameFuncrtion?? ");
+    send24DatasToTeensy6motors (10,3,-3,1); // 1 means erase data in Teensy
   
   }
-    println ( " send24datasFromRecordFrameFuncrtion?? ");
-    send24DatasToTeensy6motors (10,3,-3,1); // 1 means erase data in Teensy
+ 
     //  key='j'; keyReleased();
     output.println("1999999:0:0:0:0");
     output.println("2000000:0:0:0:0");

@@ -536,7 +536,7 @@ void arduinoPos() {
 
    if (keyMode!= " phasePattern ") {
      if (measure <17) {
-      send24DatasToTeensy6motors(10, 3, -3, -1);
+      send24DatasToTeensy6motors(20, 3, -3, -1);
   }
   else
       send24DatasToTeensy6motors(14, 3, -3, -1);

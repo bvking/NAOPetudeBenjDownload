@@ -52,10 +52,15 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
 
      delayTimeToTrig=120; //ms
      delayTimeToTrig4=120;
+
+        if (beatPrecised==1  && beatPrecisedTrigged==false){
+           formerKeyMetro = '$';
+     
+          }
      
          if (beatPrecised==2 && measure==1 && beatPrecisedTrigged==true){
            keyCode= CONTROL;
-           formerKeyMetro = '$';
+         //  formerKeyMetro = '$';
           // key = 'd';
           //key = 'f'; key = 'f'; key = 'f';
           }
@@ -90,41 +95,38 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
            positionMov = " premierePartie ";
          }
 
-        else if (measure >= 58  && measure <=68) { positionMov = " dernierePartie " ; }
-        else if (measure >= 69 ) { positionMov = " PartieFinal " ; }
+        else if (measure >= 58  && measure <=68) { positionMov = " seconde " ; }
+        else if (measure >= 69 ) { positionMov = " troisieme " ; }
 
        
         
       if (  positionMov == " premierePartie "){
    
-      if (measure<41 || measure>=42 ){
+       if (measure<41 || measure>=42 ){
 
-      if ( beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
+        if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
       oscillatorBlocked=5;
       timeToTrig=millis();
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-      if (measure<41){ 
+         if (measure>17){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
       //  key = 'd';
-     //   key = 'i';
-         }
+        key = 'i';
+      }
 
-      if ( beatPrecisedTrigged==true && beatPrecised%8==0  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
+      if (  beatPrecised==1  && beatPrecisedTrigged==true){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
       oscillatorBlocked=0;
       timeToTrig=millis();
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-      if (measure<41){ 
+      if (measure<18){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
       //  key = 'd';
       //  key = 'i';
        keyCode = CONTROL;
          }
-
-
-
-     
+ 
       if (measure>=41 && measure<=50 ){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
       //  key = 'D'; // D
@@ -135,7 +137,7 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
        oscillatorBlocked=oscillatorBlocked%networkSize;
       }
 
-         if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4 ){  // 
+      if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4 ){  // 
           oscillatorBlocked=5;
 
       timeToTrig=millis();
@@ -145,16 +147,12 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
         //  oscillatorBlocked=oscillatorBlocked+1;
        //   key = 'd';
       // key = 'i';
-
-         }
+      }
         if (measure>=41){ 
      //***     key = 'F'; //f
            }
       oscillatorBlocked=oscillatorBlocked%networkSize;
-   
-      }
-     
-    
+      }  
       if (signalToSplit<0.5 && millis()> timeToTrig+delayTimeToTrig4+20 && measure>1 && measure<600){  //  timeToTrig+delayTimeToTrig
         oscillatorBlocked=0;
         timeToTrig=millis();
@@ -173,7 +171,7 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
         }
      }
 
-       if ( positionMov == " dernierePartie "  ){     
+       if ( positionMov == " seconde "  ){     
       
        if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
       oscillatorBlocked=0;
@@ -217,7 +215,7 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
         }
 
       if (measure == 58 && beatPrecised == 7 && beatPrecisedTrigged==true ){
-            positionMov = " dernierePartie ";
+            positionMov = " seconde ";
          key = '0'; keyReleased();
            }
          
@@ -230,7 +228,7 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
       }
    } // end second partie
 
-      if ( positionMov == " partieFinal "  ){  
+      if ( positionMov == " troisieme "  ){  
     if (measure == 66 && beatPrecised == 1 && beatPrecisedTrigged==true){ // && frameCount>formerFrameTrigging+1
           key= 0;
       
@@ -267,10 +265,33 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
        }
        }
 
-       textSize(75);
+     
 
-        text (" beatTrigged " + beatTrigged +" beatPrecisedTrigged " + beatPrecisedTrigged + " beatPrecised " + beatPrecised +  "formerBeatPrecised " + formerBeatPrecised + " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key  
-       , width-width, -400);
+       textSize (50);
+ 
+  
+     text ( " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key , width-width, -400);
+
+    text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 100);
+    text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 200);
+    text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 300);
+
+   
+
+      for (int i = 0; i < networkSize; i++) {
+//  text ( "metro" + metroPhase[i] + " actual Other" + i + " " + ActualVirtualPositionFromOtherMode[i] + " PendularVirtualPosition " + i + " " + PendularVirtualPosition[i] + " virtual " + i + " " + VirtualPosition[i] + " actual " + i + " " + ActualVirtualPosition[i] + " data " + i + " " + DataToDueCircularVirtualPosition[i], 800, 1600- 100*i );
+       }
+
+    
+      textSize (75);
+     text ( " signal3 " + signal[3] , 300, 800);
+     text ( " signal4 " + signal[4] , 300, 900);
+     text ( " signal5 " + signal[5] , 300, 1000);
+     text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key + " " + keyCode, 300, 1100);
+
+
+
+ 
 
      phasePattern();
      oldSplitTimeLfo = splitTimeLfo; 
