@@ -98,78 +98,41 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
         else if (measure >= 58  && measure <=68) { positionMov = " seconde " ; }
         else if (measure >= 69 ) { positionMov = " troisieme " ; }
 
-       
-        
+              
       if (  positionMov == " premierePartie "){
-   
        if (measure<41 || measure>=42 ){
-
         if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
       oscillatorBlocked=5;
-      timeToTrig=millis();
+     // timeToTrig=millis();
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-         if (measure>17){ 
-      //    oscillatorBlocked=oscillatorBlocked+1;
-      //  key = 'd';
-        key = 'i';
-      }
+         if (measure<17){ 
+        key = 'i'; keyReleased();
+       }
+       }
 
-      if (  beatPrecised==1  && beatPrecisedTrigged==true){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
+         if ( beatTrigged==true ){ 
       oscillatorBlocked=0;
-      timeToTrig=millis();
       propagationLevel=1;
       oscillatorChangingPropagation=true;
       if (measure<18){ 
-      //    oscillatorBlocked=oscillatorBlocked+1;
-      //  key = 'd';
-      //  key = 'i';
-       keyCode = CONTROL;
+        key = 'F';
          }
  
       if (measure>=41 && measure<=50 ){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
       //  key = 'D'; // D
-       key = 'd'; // D
-       
-         }
+       key = 'd'; keyReleased();
+       }
       
        oscillatorBlocked=oscillatorBlocked%networkSize;
       }
 
-      if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4 ){  // 
-          oscillatorBlocked=5;
+    // addPropragation ou alt A 
 
-      timeToTrig=millis();
-      propagationLevel=2;
-      oscillatorChangingPropagation=true;
-        if (measure<41){ 
-        //  oscillatorBlocked=oscillatorBlocked+1;
-       //   key = 'd';
-      // key = 'i';
-      }
-        if (measure>=41){ 
-     //***     key = 'F'; //f
-           }
-      oscillatorBlocked=oscillatorBlocked%networkSize;
-      }  
-      if (signalToSplit<0.5 && millis()> timeToTrig+delayTimeToTrig4+20 && measure>1 && measure<600){  //  timeToTrig+delayTimeToTrig
-        oscillatorBlocked=0;
-        timeToTrig=millis();
-        propagationLevel=0;
-        oscillatorChangingPropagation=false;
-     // oscillatorBlocked=oscillatorBlocked-1;
-      if (oscillatorBlocked<=0) {
-        oscillatorBlocked=networkSize-1;
-      }
-      if (measure > 41)  {
-       //   key = 'd';
-         }
-     //  else  key = 'i';
-          }
          }
         }
-     }
+     
 
        if ( positionMov == " seconde "  ){     
       
@@ -178,7 +141,7 @@ void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTI
       timeToTrig=millis();
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-       key = 'F';
+       key = 'F'; keyReleased();
          }   
 
 

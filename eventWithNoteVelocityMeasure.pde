@@ -9,15 +9,8 @@ void trigBeatWithMeasure()
   else  beatPrecisedTrigged=false; 
 
    if (formerMeasure!=measure) {
-    //   background (127, 50, 50);
+  
     beatTrigged=true;
-
-   
-    
-    
-    
-
-    //    autmationWithMeasureAndNote++;
 
     beatOnMeasure=(measure%4)+1;
     print("  ******** "); 
