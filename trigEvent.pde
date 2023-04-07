@@ -2,7 +2,7 @@ int delayTimeToTrig4; //ms
 float signalToSplit4;
 String positionMov;
 
-void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
+void trigEventWithAbletonSignal(){  // change de sens de propagagtion.   ATTENTION dans ce reglage le signalToSplit de propgation est UP continue de 0 à TWO_PI
 
     lfoPhase[1] = (frameCount / 10.0 * cos (1000 / 500.0)*-1)%TWO_PI;  // continue 0 to TWO_PI;
     lfoPhase[3] = map ((((cos  (frameCount / 30.0))*-1) %2), -1, 1, -TWO_PI, TWO_PI);  // sinusoidale lente
@@ -44,41 +44,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
    text (" oldOscillatorChange " + oldOscillatorChange + " oscillatorChange " + oscillatorChange + " j " + nf (phaseKeptAtChange[oscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 400 );
    text (" oscillatorChangingPropagation " +  oscillatorChangingPropagation  +  nf (phaseKeptAtChange[oldOscillatorChange]/TWO_PI*360%360, 0, 2), -width-200, -height- 300 );
 
-  /* 
-    if (oldSplitTimeLfo-splitTimeLfo>150){  // if previous signal is upper of 15%
-      oscillatorChangingPropagation=true;
-      oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange+1;
-      }
-     else  oscillatorChangingPropagation=false;
-      oscillatorChange=oscillatorChange%networkSize;
-     if (oscillatorChange<=0) {
-      oldOscillatorChange=networkSize-1;
-     }
-
-    if (splitTimeLfo-oldSplitTimeLfo>150){  // if previous signal is downer of 15%
-      oscillatorChangingPropagation=true;
-      oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange+1;
-      }
-     else  oscillatorChangingPropagation=false;
-      oscillatorChange=oscillatorChange%networkSize;
-     if (oscillatorChange<=0) {
-      oldOscillatorChange=networkSize-1;
-     } 
-  */
-
-    /*
-     if (splitTimeLfo-oldSplitTimeLfo>150){ // if previous signal is upper of 15%
-      oscillatorChangingPropagation=true;
-      oldOscillatorChange=oscillatorChange;
-      oscillatorChange=oscillatorChange-1;
-     } 
-      if (oscillatorChange<=-1) {
-      oldOscillatorChange=0;
-      oscillatorChange=networkSize-1;
-    }
-    */
+ 
       text (" blocked "  + oscillatorBlocked, width-width/8, -height/4);
 
      signalToSplit = map ( signal[5], 0, 1, 0, 1);
@@ -124,25 +90,40 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            positionMov = " premierePartie ";
          }
 
-        else if (measure >= 58  && measure <=64) { positionMov = " dernierePartie " ; }
-        else if (measure >= 65  ) { positionMov = " PartieFinal " ; }
+        else if (measure >= 58  && measure <=68) { positionMov = " dernierePartie " ; }
+        else if (measure >= 69 ) { positionMov = " PartieFinal " ; }
 
        
         
       if (  positionMov == " premierePartie "){
-      //   positionMov = " premierePartie ";
-       if (measure<41 || measure>=42 ){
+   
+      if (measure<41 || measure>=42 ){
 
-      if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
-            oscillatorBlocked=5;
+      if ( beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
+      oscillatorBlocked=5;
       timeToTrig=millis();
       propagationLevel=1;
       oscillatorChangingPropagation=true;
       if (measure<41){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
       //  key = 'd';
-        key = 'i';
+     //   key = 'i';
          }
+
+      if ( beatPrecisedTrigged==true && beatPrecised%8==0  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
+      oscillatorBlocked=0;
+      timeToTrig=millis();
+      propagationLevel=1;
+      oscillatorChangingPropagation=true;
+      if (measure<41){ 
+      //    oscillatorBlocked=oscillatorBlocked+1;
+      //  key = 'd';
+      //  key = 'i';
+       keyCode = CONTROL;
+         }
+
+
+
      
       if (measure>=41 && measure<=50 ){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
@@ -187,9 +168,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        //   key = 'd';
          }
      //  else  key = 'i';
-      }
-      }
-      }
+          }
+         }
+        }
+     }
 
        if ( positionMov == " dernierePartie "  ){     
       
@@ -214,31 +196,27 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         oscillatorBlocked=oscillatorBlocked%networkSize; 
        }
         
-       if (signalToSplit<0.5 && millis()> 0 && measure>1 && measure<600){  //  timeToTrig+delayTimeToTrig
+      if (signalToSplit<0.5 && millis()> 0 && measure>1 && measure<600){  //  timeToTrig+delayTimeToTrig
        oscillatorBlocked=5;
        timeToTrig=millis();
        propagationLevel=0;
       oscillatorChangingPropagation=false;
      // oscillatorBlocked=oscillatorBlocked-1;
       if (oscillatorBlocked<=0) {
-      oscillatorBlocked=networkSize-1;
-      }
-      if (measure > 57)  {
+       oscillatorBlocked=networkSize-1;
+       }
+       if (measure > 57)  {
           key = 'F';
          }
-      }
+       }
       
-
-      
- 
-
-       if (measure == 58 && beatPrecised == 6 && beatPrecisedTrigged==true ){
+      if (measure == 58 && beatPrecised == 6 && beatPrecisedTrigged==true ){
           formerKeyMetro = '*';
       
        //   key= '='; keyReleased();
         }
 
-        if (measure == 58 && beatPrecised == 7 && beatPrecisedTrigged==true ){
+      if (measure == 58 && beatPrecised == 7 && beatPrecisedTrigged==true ){
             positionMov = " dernierePartie ";
          key = '0'; keyReleased();
            }
@@ -296,7 +274,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
      phasePattern();
      oldSplitTimeLfo = splitTimeLfo; 
-     } 
+} 
 
   
 
@@ -309,4 +287,42 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          text ( "   AlternativeVirtualPositionFromOtherMode[i] " + i + " " +  ActualVirtualPositionFromOtherMode[i] , -800, 800-10*i );
        } 
     } 
+    */
+
+
+
+     /* 
+    if (oldSplitTimeLfo-splitTimeLfo>150){  // if previous signal is upper of 15%
+      oscillatorChangingPropagation=true;
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange+1;
+      }
+     else  oscillatorChangingPropagation=false;
+      oscillatorChange=oscillatorChange%networkSize;
+     if (oscillatorChange<=0) {
+      oldOscillatorChange=networkSize-1;
+     }
+
+    if (splitTimeLfo-oldSplitTimeLfo>150){  // if previous signal is downer of 15%
+      oscillatorChangingPropagation=true;
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange+1;
+      }
+     else  oscillatorChangingPropagation=false;
+      oscillatorChange=oscillatorChange%networkSize;
+     if (oscillatorChange<=0) {
+      oldOscillatorChange=networkSize-1;
+     } 
+  */
+
+    /*
+     if (splitTimeLfo-oldSplitTimeLfo>150){ // if previous signal is upper of 15%
+      oscillatorChangingPropagation=true;
+      oldOscillatorChange=oscillatorChange;
+      oscillatorChange=oscillatorChange-1;
+     } 
+      if (oscillatorChange<=-1) {
+      oldOscillatorChange=0;
+      oscillatorChange=networkSize-1;
+    }
     */

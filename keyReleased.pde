@@ -2,7 +2,7 @@ void keyReleased() {
     if (keyCode == ALT){
     moveKeys[8]=false;
    }
-   recordFrame();
+   
    textSize (100);
 
     if (key == '=' && formerKeyMetro == '*') {

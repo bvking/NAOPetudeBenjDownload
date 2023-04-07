@@ -84,6 +84,8 @@ boolean trigEffect;
 boolean trigEffectBis;
 
 void draw() {
+
+  recordFrame();
  
  println ("  oldEncodeur[0] " +   oldEncodeur[0] + " v1 " + v1 + " v2 " + v2 + " v3 " + v3 + " v4 " + v4 +  " v5 " + v5); 
  println ("  encodeur[0] " +  encodeur[0] + " v1 " + v1 + " v2 " + v2 + " v3 " + v3 + " v4 " + v4 +  " v5 " + v5); 
@@ -1644,7 +1646,7 @@ void recordFrame() {
     keyMode = " phasePattern ";
     key = '9'; // aligne les ballee
      for (int i = 0; i < networkSize; i++)  {
-  // DataToDueCircularVirtualPosition[i]=0;
+     // DataToDueCircularVirtualPosition[i]=0;
   
   }
     println ( " send24datasFromRecordFrameFuncrtion?? ");
