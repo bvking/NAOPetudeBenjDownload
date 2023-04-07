@@ -809,7 +809,8 @@ void phasePattern() { // need standard mode to be trigged
     for (int i = 0; i < networkSize; i++) {
 
     //  net.phase[i] +=(oscillatorBlocked-i)*0.1;
-       net.phase[i] -=(i+1)*0.1;
+    //   net.phase[i] -=(i+1)*0.1;
+        net.phase[i]+=   TWO_PI/8/(networkSize)*(networkSize-1-i); // front 
    //   net.phase[i] =  net.phase[i]%TWO_PI;
       printSummary(i);
     }
@@ -862,7 +863,7 @@ void phasePattern() { // need standard mode to be trigged
     for (int i = 0; i < networkSize; i++) {
 
    //   net.phase[i] +=(i+1)*0.1;
-      net.phase[i] +=TWO_PI/8/(networkSize-1)*i;
+      net.phase[i] +=TWO_PI/8/(networkSize-1)*i; // 8 is the step, if 16 little step
    //   net.phase[i]=  net.phase[i]%TWO_PI;
       key='#';
       printSummary(i);
@@ -879,7 +880,7 @@ void phasePattern() { // need standard mode to be trigged
     //** net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
     // net.phase[i]+=   (PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
-    //  net.phase[i]+=   (PI/(networkSize)*(networkSize-1-i)); // front 
+    //  net.phase[i]+=   TWO_PI/(networkSize)*(networkSize-1-i); // front 
         net.phase[i]+=   TWO_PI/(networkSize-1)*i; // behind
 
       //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
