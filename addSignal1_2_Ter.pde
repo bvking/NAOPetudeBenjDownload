@@ -1,16 +1,31 @@
 void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconfigurer
+
+     
+   if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
+        
+           keyCode = ALT; key = 'v'; // key 
+           key ='0'; keyReleased();
+           formerKeyMetro = '*';
+
+         //  moveKeys[8]=true;
+         //  moveKeys[12]=true;
+        // keyMode = " trigEventWithAbletonSignal ";
+        //trigEventWithAbletonSignal();
+              positionMov = " troisieme " ;
+          } 
+
 //   signal2 continue
  //   signal to split sinus
   // lfoPattern(); // if ive is not open  //lfoPattern(); // if Live is not open
     // if you dob't use this, uncomment signal2 in addSignalLfoPattern()
      textSize (100);
-     text ("Change mode q, z, or stop progation with b ", -width-200, -height- 600 );
-     text ("signal2 " + signal[2], -width-200, -height- 500 );
- //    text ("signal3 " + signal[3], -width-200, -height- 400 );
-     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width-200, -height- 400 );
-     text (" oldSignalToSplit " + oldSignalToSplit + " signalToSplit " +     signalToSplit + " timeLFO " + timeLfo,  -width-200, -height- 300 );
-     text (" oscillatorChange " + oscillatorChange + " oscillatorChanging " + phaseKeptAtChange[oscillatorChanging], -width-200, -height- 200 );
-     text (" propagationSpeed " + propagationSpeed + " key " + key + " startZ " + startZ, -width-200, -height- 100 );
+     text ("Change mode q, z, or stop progation with b ", -width-200, -height- 600-500 );
+     text ("signal2 " + signal[2], -width-200, -height- 500-500 );
+ //    text ("signal3 " + signal[3], -width-200, -height- 400-500 );
+     text (" oldSignalToSplit " + oldSplitTime + " splitTime " +  splitTime + " timeLFO " + timeLfo,  -width-200, -height- 400-500 );
+     text (" oldSignalToSplit " + oldSignalToSplit + " signalToSplit " +     signalToSplit + " timeLFO " + timeLfo,  -width-200, -height- 300-500 );
+     text (" oscillatorChange " + oscillatorChange + " oscillatorChanging " + phaseKeptAtChange[oscillatorChanging], -width-200, -height- 200-500 );
+     text (" propagationSpeed " + propagationSpeed + " key " + key + " startZ " + startZ, -width-200, -height- 100-500 );
       
    if (key=='q' || key=='b' || key=='z' ) { // q == addsignal
      letter = key;   
@@ -36,7 +51,13 @@ void addSignalOneAndTwoTer() { // inspireé de quater . splitTimeQuater A reconf
 //  splitTimeLfoQuater(); //USELESS with propagation Mode
   splitTimeWithAbletonNoteBis(); // oscillator Change with note from Ableton
  // addSignalLfoPatternQuater(); // devenu fonction ci dessous
-  propagationMode();
+
+
+    propagationMode();
+
+ 
+
+
  
  formerFormerKey= formerKey;   
  formerKey=key;
@@ -528,7 +549,7 @@ void splitTimeWithAbletonNoteBis() {
          }
        } 
        
-          text (oscillatorChange, 300, 100);
+          text ( "  splitTimeWithAbletonNoteBis " +  oscillatorChange, -500, 100);
   
     }
   }

@@ -793,7 +793,9 @@ void phasePattern() { // need standard mode to be trigged
     println(" d$: INCREASE (clock way) the gap between phases of 5% from the oscillator " + oscillatorBlocked + " called with the same number as memoryi " + memoryi );
     for (int i = 0; i < networkSize; i++) {
 
-      net.phase[i] +=(oscillatorBlocked-i)*0.05; // oscillator 10 do not nove
+    //  net.phase[i] +=(oscillatorBlocked-i)*0.05; // oscillator 10 do not nove
+        net.phase[i] +=(i+1)*0.05;
+
    //     net.phase[i] -=(i+1)*0.05;
     //        net.phase[i] +=(5-i)*0.1; // oscillator 10 do not nove
    //   net.phase[i] +=(networkSize-oscillatorBlocked)*0.05;
@@ -810,7 +812,7 @@ void phasePattern() { // need standard mode to be trigged
 
     //  net.phase[i] +=(oscillatorBlocked-i)*0.1;
     //   net.phase[i] -=(i+1)*0.1;
-        net.phase[i]+=   TWO_PI/8/(networkSize)*(networkSize-1-i); // front 
+        net.phase[i]+=   TWO_PI/8/(networkSize)*(networkSize-1-i); // front  TWO_PI/8/(networkSize)*(i)   behind?
    //   net.phase[i] =  net.phase[i]%TWO_PI;
       printSummary(i);
     }
@@ -880,8 +882,8 @@ void phasePattern() { // need standard mode to be trigged
     //** net.phase[i]+=   (TWO_PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
 
     // net.phase[i]+=   (PI/(networkSize-2))*(1*(networkSize-1-i)); // TWOPI/10--> 10 hit * 3%PI/3 with and oscillator11 not affected
-    //  net.phase[i]+=   TWO_PI/(networkSize)*(networkSize-1-i); // front 
-        net.phase[i]+=   TWO_PI/(networkSize-1)*i; // behind
+     net.phase[i]+=   TWO_PI/(networkSize)*(networkSize-1-i); // front 
+      //  net.phase[i]+=   TWO_PI/(networkSize-2)*i; // behind
 
       //     net.phase[networkSize-1-i] += (i*TWO_PI/10)%PI/3;  // 10*3 hit//same effect as above 
 

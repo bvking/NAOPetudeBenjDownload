@@ -5,8 +5,8 @@ void send24DatasToTeensy6motors(int accelerationRatio, int driver0_On_Off, int c
   computeData=-2;
        dataFromMode ="<"
 
-        + DataToDueCircularVirtualPosition[5]+ ","+ DataToDueCircularVirtualPosition[4]+ ","+ DataToDueCircularVirtualPosition[3]+","+ DataToDueCircularVirtualPosition[2]+ ","
-      + DataToDueCircularVirtualPosition[1]+ ","+  DataToDueCircularVirtualPosition[0] + ","      // 
+      + DataToDueCircularVirtualPosition[5]+ ","+ DataToDueCircularVirtualPosition[4]+ ","+ DataToDueCircularVirtualPosition[3]+","+ DataToDueCircularVirtualPosition[2]+ ","
+      + DataToDueCircularVirtualPosition[1]+ ","+ DataToDueCircularVirtualPosition[0] + ","      // 
 
     //    + DataToDueCircularVirtualPosition[5]%6400+ ","+ DataToDueCircularVirtualPosition[4]%6400+ ","+ DataToDueCircularVirtualPosition[3]%6400+","+ DataToDueCircularVirtualPosition[2]%6400+ ","
     //  + DataToDueCircularVirtualPosition[1]%6400+ ","+  DataToDueCircularVirtualPosition[0]%6400 + ","      // 

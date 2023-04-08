@@ -177,7 +177,8 @@ void draw() {
     }
 
    if (moveKeys[8]==true && moveKeys[11]==true){ // ALT & f
-    keyMode = " methodAbleton " ;
+   // keyMode = " methodAbleton " ;
+    keyMode = " trigEventWithAbletonSignal " ;
     formerKeyMetro = '*';
   }
 
