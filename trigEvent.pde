@@ -153,7 +153,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         }
        }
 
-         if (measure==42){ 
+        if (measure==42){ 
          if (beatPrecised==4 && beatPrecisedTrigged==true  ){
         key = 'ç'; keyReleased();
         key = 'F'; keyReleased();
@@ -175,15 +175,18 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       }// end premiere 
      
 
-       if (positionMov == " seconde " ){     
+       if (positionMov == " seconde " ){   
+
+    //   keyCode =ALT; keyPressed(); key = 'a'; keyPressed();
+        keyMode = " addSignalOneAndTwoTer ";
       
       if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
-
+     
       oscillatorBlocked=0;
       timeToTrig=millis();
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-       key = 'D'; keyReleased();
+     //  key = 'D'; keyReleased();
        }   
 
 
@@ -192,13 +195,13 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
        timeToTrig=millis();
        oscillatorChangingPropagation=true;
-       key = 'd'; keyReleased();
+     //  key = 'd'; keyReleased();
            
         oscillatorBlocked=oscillatorBlocked%networkSize; 
        }
         
        if (measure > 57)  {
-          key = 'F'; keyReleased();
+       //   key = 'F'; keyReleased();
        }
        
       
