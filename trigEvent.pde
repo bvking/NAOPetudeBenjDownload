@@ -110,12 +110,21 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         key = 'F'; keyReleased();
          }
        }
+      
+      if (measure==17){ 
+         if (beatPrecised==4 && beatPrecisedTrigged==true  ){
+        key = 'ç'; keyReleased();
+        key = '0'; keyReleased();
+        }
+       }
+
       if (measure>16){ 
         if (beatPrecised%4==0 && beatPrecisedTrigged==true){ 
       oscillatorBlocked=0;
       propagationLevel=1;
       oscillatorChangingPropagation=true;
         key = 'D'; keyReleased();
+        text ("beatPrecised%4" +  key , 0, 0);
          }
        }
       if (measure>16){ 
@@ -124,12 +133,39 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       propagationLevel=1;
       oscillatorChangingPropagation=true;
        key = 'F'; keyReleased();
+        text ("beatPrecised+2%4" +  key , 0, 100);
          }
        }
+      
+       if (measure==33){ 
+         if (beatPrecised==3 && beatPrecisedTrigged==true  ){
+      //  key = 'ç'; keyReleased();
+        key = '°'; keyReleased();
+       //    key = 'f'; keyReleased();
+        }
+       }
+
+       if (measure>=34){ 
+         if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){
+      //  key = 'ç'; keyReleased();
+        key = 'i'; keyReleased();
+      //  keyCode =ALT; key = 'r';
+        }
+       }
+
+         if (measure==42){ 
+         if (beatPrecised==4 && beatPrecisedTrigged==true  ){
+        key = 'ç'; keyReleased();
+        key = 'F'; keyReleased();
+        key = '0'; keyReleased();
+      //  keyCode =ALT; key = 'r';
+        }
+       }
+
       if (measure>=41 && measure<=50 ){ 
       //    oscillatorBlocked=oscillatorBlocked+1;
       //  key = 'D'; // D
-       key = 'd'; keyReleased();
+      // key = 'd'; keyReleased();
        }   
        oscillatorBlocked=oscillatorBlocked%networkSize;
       }
