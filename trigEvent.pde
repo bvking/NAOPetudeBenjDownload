@@ -115,7 +115,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       oscillatorBlocked=0;
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-        key = 'D';
+        key = 'D'; keyReleased();
          }
        }
       if (measure>16){ 
@@ -123,7 +123,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       oscillatorBlocked=0;
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-       key = 'F';
+       key = 'F'; keyReleased();
          }
        }
       if (measure>=41 && measure<=50 ){ 
@@ -136,7 +136,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
     // addPropragation ou alt A 
 
-      }
+      }// end premiere 
      
 
        if (positionMov == " seconde " ){     
@@ -156,13 +156,13 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
        timeToTrig=millis();
        oscillatorChangingPropagation=true;
-       key = 'd';
+       key = 'd'; keyReleased();
            
         oscillatorBlocked=oscillatorBlocked%networkSize; 
        }
         
        if (measure > 57)  {
-          key = 'F';
+          key = 'F'; keyReleased();
        }
        
       
@@ -206,15 +206,15 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
                    key = 'y';   
       }
 
-           if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
+    if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
         //    oscillatorBlocked=0;
       timeToTrig=millis();
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-              }
+      }
 
 
-         if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4 ){  // 
+    if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4 ){  // 
         //  oscillatorBlocked=5;
 
        timeToTrig=millis();
@@ -222,21 +222,18 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       //   key = 'r';
           
         oscillatorBlocked=oscillatorBlocked%networkSize; 
-       }
-       }
+     }
+   }
 
      
 
        textSize (50);
  
   
-     text ( " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key , width-width, -400);
-
+    text ( " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key , width-width, -400);
     text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 100);
     text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 200);
     text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 300);
-
-   
 
       for (int i = 0; i < networkSize; i++) {
       //  text ( "metro" + metroPhase[i] + " actual Other" + i + " " + ActualVirtualPositionFromOtherMode[i] + " PendularVirtualPosition " + i + " " + PendularVirtualPosition[i] + " virtual " + i + " " + VirtualPosition[i] + " actual " + i + " " + ActualVirtualPosition[i] + " data " + i + " " + DataToDueCircularVirtualPosition[i], 800, 1600- 100*i );
@@ -248,10 +245,6 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
      text ( " signal4 " + signal[4] , 300, 900);
      text ( " signal5 " + signal[5] , 300, 1000);
      text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key + " " + keyCode, 300, 1100);
-
-
-
- 
 
      phasePattern();
      oldSplitTimeLfo = splitTimeLfo; 

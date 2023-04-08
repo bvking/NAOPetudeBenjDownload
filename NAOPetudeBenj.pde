@@ -85,8 +85,6 @@ boolean trigEffectBis;
 
 void draw() {
 
-  recordFrame();
- 
  println ("  oldEncodeur[0] " +   oldEncodeur[0] + " v1 " + v1 + " v2 " + v2 + " v3 " + v3 + " v4 " + v4 +  " v5 " + v5); 
  println ("  encodeur[0] " +  encodeur[0] + " v1 " + v1 + " v2 " + v2 + " v3 " + v3 + " v4 " + v4 +  " v5 " + v5); 
 
@@ -395,20 +393,6 @@ for (int i = 0; i < networkSize; i++) {
  //**   printDataOnScreen();
  //     printMidiNoteVelocity();
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     
   if (keyMode != " phasePattern ")
@@ -1582,7 +1566,7 @@ void recordFrame() {
     key = '9'; // aligne les ballee
      for (int i = 0; i < networkSize; i++)  {
      // DataToDueCircularVirtualPosition[i]=0;
-        println ( " send24datasFromRecordFrameFuncrtion?? ");
+    println ( " send24datasFromRecordFrameFuncrtion?? ");
     send24DatasToTeensy6motors (10,3,-3,1); // 1 means erase data in Teensy
   
   }
@@ -1602,14 +1586,8 @@ void recordFrame() {
     recordBis();
     formerFrame= frameCount;
   }
- if ( keyMode == " null " ) {
-  
-     text (" delayTimeFollowPhase11  ",  200,-1200);
-     text ( delayTimeFollowPhase11  ,  200,-1100);
-    
-    text (" phaseShiftingFollowPhase11  ",  200,-1000);
-    text ( phaseShiftingFollowPhase11  ,  200,-900);
-    }
+
+   
 }
 
 

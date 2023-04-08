@@ -1,4 +1,7 @@
 void keyReleased() {
+    
+     recordFrame();
+
     if (keyCode == ALT){
     moveKeys[8]=false;
    }
