@@ -202,10 +202,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       }// end premiere 
      
 
-       if (positionMov == " seconde " ){   
+       if (positionMov == " seconde " ){    // 58 to 68
 
     //   keyCode =ALT; keyPressed(); key = 'a'; keyPressed();
         keyMode = " addSignalOneAndTwoTer ";
+        formerKeyMetro = '*';
       
       if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
      
@@ -275,7 +276,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             
       }
     
-     if (measure > 66 && measure <= 72 && beatPrecised!=0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+     if (measure > 66 && measure <= 73 && beatPrecised!=0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'y';   
        }  
 
@@ -306,6 +307,15 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         if (measure >= 83 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'H';  
           key = 'H';  
+          key = 'H';   
+          key = 'H';   
+       } 
+
+       if (measure == 96 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
+       //  key = 'p';
+          key = 'H';  
+          key = 'H';  
+          key = 'H';   
           key = 'H';   
        } 
 
