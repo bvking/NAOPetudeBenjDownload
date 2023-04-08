@@ -103,12 +103,18 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         else if (measure >= 58  && measure <=66 && beatPrecised < 4) {
            positionMov = " seconde " ; }
 
-      //     /*  int addSignal1andTwoTerr
+      //     /*  in addSignal1andTwoTerr
         else if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
            positionMov = " troisieme " ;
         //   keyCode = ALT; key = 'v'; // key 
             }
        //    */
+
+        else if (measure == 82 && beatPrecised == 4 && beatPrecisedTrigged==true && measure <=100) {
+
+             positionMov = " quatrieme " ;
+
+           }
               
       if (  positionMov == " premierePartie "){
        if (measure<41 || measure>=42 ){
@@ -160,6 +166,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          if (beatPrecised==3 && beatPrecisedTrigged==true  ){
       //  key = 'ç'; keyReleased();
         key = '°'; keyReleased();
+        keyCode = CONTROL;
        //    key = 'f'; keyReleased();
         }
        }
@@ -176,6 +183,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
          if (beatPrecised==4 && beatPrecisedTrigged==true  ){
         key = 'ç'; keyReleased();
         key = 'F'; keyReleased();
+       
         key = '0'; keyReleased();
       //  keyCode =ALT; key = 'r';
         }
@@ -254,37 +262,52 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       }
      if (measure == 66 && beatPrecised == 5 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'y';   
-             key = 'y';   
-                key = 'y';   
-                   key = 'y';   
+        
+            
+             
+             
       }
     if (measure == 66 && beatPrecised == 7 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+        
           key = 'y';   
-             key = 'y';   
-                key = 'y';   
-                   key = 'y';   
+            
+               
+            
       }
+    
+     if (measure > 66 && measure <= 72 && beatPrecised!=0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+          key = 'y';   
+       }  
 
-    if (signalToSplit>0.5 && millis()> timeToTrig+delayTimeToTrig ){  // 
-        //    oscillatorBlocked=0;
-      timeToTrig=millis();
-      propagationLevel=1;
-      oscillatorChangingPropagation=true;
-      }
+      if (measure == 68 || measure == 70 ||
+          measure == 72 || measure == 74 || measure == 76 ||
+            measure == 78 || measure == 80
+      
+      ) {
 
+      if ( beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+          key = 'i'; 
 
-    if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4 ){  // 
-        //  oscillatorBlocked=5;
-
-       timeToTrig=millis();
-       oscillatorChangingPropagation=true;
-      //   key = 'r';
-          
-        oscillatorBlocked=oscillatorBlocked%networkSize; 
+       }
      }
-   }
+    }
+    
 
-     if ( positionMov == " quatrieme "  ){
+     if ( positionMov == " quatrieme "  ){ // 82.4
+
+         if (measure >= 82 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+          key = 'o';   
+       } 
+
+       if (measure >= 82 && beatPrecised != 0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+          key = 'r';   
+       }  
+
+        if (measure >= 83 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
+          key = 'H';  
+          key = 'H';  
+          key = 'H';   
+       } 
 
        } 
 
