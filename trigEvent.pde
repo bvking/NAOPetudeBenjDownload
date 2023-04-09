@@ -82,10 +82,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
           if (measure==41 && beatPrecised == 5 && beatPrecisedTrigged==true ){
           key= 'P';
+          key= 'P';
           }
 
            if (measure==41 && beatPrecised == 7 && beatPrecisedTrigged==true ){
-          key= 'P';
+       //   key= 'P';
           }
 
   
@@ -96,11 +97,17 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            delayTimeToTrig4=140;     
           }
 
+           if (measure>=52 && beatPrecised == 2 ||beatPrecised == 6 && beatPrecisedTrigged==true){
+          text ( " SNARE ", -800, -800)   ;  
+          }
+
+
+
          if (measure < 58 ){
            positionMov = " premierePartie ";
           }
 
-        else if (measure >= 58  && measure <=66 && beatPrecised < 4) {
+        else if (measure >= 58  && measure <=66 ) { //&& beatPrecised < 4
            positionMov = " seconde " ; }
 
       //     /*  in addSignal1andTwoTerr
@@ -287,7 +294,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       }
     
      if (measure > 66 && measure <= 72 && beatPrecised!=0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
-          key = 'y';   
+          key = 'y'; 
+           key = 'y';   
        }  
 
       if (measure == 68 || measure == 70 ||
@@ -300,22 +308,28 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           key = 'i'; 
 
        }
+
+      if ( measure%4==0 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
+         keyCode = CONTROL;
+
+       }
      }
     }
     
 
      if ( positionMov == " quatrieme "  ){ // 82.4
 
-         if (measure >= 82 && beatPrecised == 5 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+         if (measure == 82 && beatPrecised == 5 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'o';   
        } 
 
        if (measure >= 82 && beatPrecised != 0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'r';  
+          key = 'r';
           key = 'r';  
        }  
 
-        if (measure >= 83 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
+        if (measure >= 84 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'H';  
           key = 'H';  
           key = 'H'; 
@@ -324,8 +338,8 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
        } 
 
        if (measure == 96 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
-       //  key = 'p';
-         keyCode= CONTROL;
+         key = 'p';
+       //  keyCode= CONTROL;
           key = 'H';  
           key = 'H';  
           key = 'H';   
