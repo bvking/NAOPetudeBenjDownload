@@ -77,12 +77,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            delayTimeToTrig4=100;
            delayTimeToTrig=140;
         //  key= '='; keyReleased();
-           key = 'ç';
+         //  key = 'ç';
           }
 
           if (measure==41 && beatPrecised == 5 && beatPrecisedTrigged==true ){
-          key= 'P';
-          key= 'P';
+        //  key= 'P';
+        //  key= 'P';
           }
 
            if (measure==41 && beatPrecised == 7 && beatPrecisedTrigged==true ){
@@ -91,14 +91,21 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
   
           if (measure==42 && beatPrecised == 1 && beatPrecisedTrigged==true){
+            key = 'ç';
+             key= 'P';
+            key= 'P';
            key= 'P';
            key = '0';
            formerKeyMetro = '$';
            delayTimeToTrig4=140;     
           }
 
-           if (measure>=52 && beatPrecised == 2 ||beatPrecised == 6 && beatPrecisedTrigged==true){
+           if (measure>=52 && beatPrecised == 2 ||beatPrecised == 6 && beatPrecisedTrigged==true ){
           text ( " SNARE ", -800, -800)   ;  
+          if ( positionMov == " premierePartie ") {
+          // key = 'F';
+         // key= 'k';  // motor only
+            }
           }
 
 
@@ -107,7 +114,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            positionMov = " premierePartie ";
           }
 
-        else if (measure >= 58  && measure <=66 ) { //&& beatPrecised < 4
+        else if (measure >= 58  && measure <=66 && beatPrecised < 4 ) { 
            positionMov = " seconde " ; }
 
       //     /*  in addSignal1andTwoTerr
@@ -124,7 +131,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            }
               
       if (  positionMov == " premierePartie "){
-       if (measure<41 || measure>=42 ){
+       if (measure<41  || measure>=42 ){
         if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
       oscillatorBlocked=5;
      // timeToTrig=millis();
@@ -205,18 +212,23 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       //  keyCode =ALT; key = 'r';
         }
        }
-
-      if (measure>=41 && measure<=50 ){ 
-      //    oscillatorBlocked=oscillatorBlocked+1;
-      //  key = 'D'; // D
-      // key = 'd'; keyReleased();
-       }   
-       oscillatorBlocked=oscillatorBlocked%networkSize;
       }
+      }
+// TYRANSITION
+         if (measure>40  && measure<=42 ){
+           if (beatPrecised==0 && measure==40  ){
+          key= '0';
+           if (beatPrecised!=0 && beatPrecisedTrigged==true  ){
+
+               key = 'r'; keyReleased();
+          }
+       }
+      }
+     
 
     // addPropragation ou alt A 
 
-      }// end premiere 
+      // end premiere 
      
 
        if (positionMov == " seconde " ){    // 58 to 68
@@ -303,14 +315,17 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             measure == 78 || measure == 80
       
       ) {
+          if (measure == 76 && beatPrecised == 80 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
+         keyCode = CONTROL;
+      } 
 
-      if ( beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+      if ( measure < 80 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'i'; 
 
        }
 
       if ( measure%4==0 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
-         keyCode = CONTROL;
+       //  keyCode = CONTROL;
 
        }
      }
@@ -336,9 +351,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           key = 'H';   
           
        } 
+         if (measure == 96 && beatPrecised == 2 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
+         key = 'ç';
+      } 
 
        if (measure == 96 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
-         key = 'p';
+         key = 'ç';
        //  keyCode= CONTROL;
           key = 'H';  
           key = 'H';  

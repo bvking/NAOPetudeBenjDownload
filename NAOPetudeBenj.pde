@@ -797,10 +797,10 @@ trigEffectToAbletonLive();
   //==============================TAKE ON BELOW TO RECORD COUPLING
 
   if (mousePressed != true) {
-    coupling = map ((float (mouseX)/width*1), 0, 1, -10, 10 ); //SET COUPLING
+  //  coupling = map ((float (mouseX)/width*1), 0, 1, -5, 5 ); //SET COUPLING
     //   key= '#'; keyReleased();
     // keyCode =CONTROL; keyReleased();
-    //   net.setCoupling(coupling);
+   //   net.setCoupling(coupling);
   }
 
 
