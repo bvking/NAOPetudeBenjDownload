@@ -127,6 +127,14 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         key = 'i'; keyReleased();
        }
        }
+          if (measure > 1 && measure<17){ 
+             if (beatTrigged==true){ 
+        key = 'K'; keyReleased();
+        key = 'K'; keyReleased();
+         }
+        }
+       
+
       if (measure<41 && measure>17){ 
         if (beatTrigged==true){ 
       oscillatorBlocked=0;
@@ -304,18 +312,20 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
        if (measure >= 82 && beatPrecised != 0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'r';  
-            key = 'r';  
+          key = 'r';  
        }  
 
         if (measure >= 83 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'H';  
           key = 'H';  
+          key = 'H'; 
           key = 'H';   
           
        } 
 
        if (measure == 96 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
        //  key = 'p';
+         keyCode= CONTROL;
           key = 'H';  
           key = 'H';  
           key = 'H';   

@@ -412,7 +412,9 @@ void arduinoPos() {
  //       print(" mapAcc  "); print (i);  print (" "); print(mapAcceleration[i]); println(" "); 
         
        }
-        text ( "velocityBis[0] " + velocityBis[0], -400, 400 );
+       rotate (HALF_PI);
+        text ( "velocityBis[0] " + velocityBis[0], -700, 900 );
+        rotate (-HALF_PI);
       }  
       
      //*********** END COMPUTE ACCELERATION 

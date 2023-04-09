@@ -6,7 +6,7 @@ void phasePattern() { // need standard mode to be trigged
   }
   }
 
- if  (   keyMode == " phasePattern "  ) {
+ if  (  keyMode == " phasePattern "  ) {
 //  splitIncomingSignal();
 //   text ( " oscillatorChangingPropagation " + oscillatorChangingPropagation, 200, 200 );
   if ( propagationLevel==1) {
@@ -392,8 +392,8 @@ void phasePattern() { // need standard mode to be trigged
     for (int i = 0; i < (networkSize-0); i++) {    
 
       //     net.phase[i]-= QUARTER_PI/(10);
-          net.phase[i]-=HALF_PI;
-       // net.phase[i]=net.phase[i]-QUARTER_PI;
+          net.phase[i]=net.phase[i]-QUARTER_PI/4;
+       // net.phase[i]=net.phase[i]-QUARTERK_PI;
      // ActualVirtualPosition[i]+=0;  
 
       /*
@@ -408,7 +408,7 @@ void phasePattern() { // need standard mode to be trigged
        ActualVirtualPosition[i]=ActualVirtualPosition[i]%numberOfStep*5;
        */
 
-      ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/8;
+    //  ActualVirtualPosition[i]=ActualVirtualPosition[i]+numberOfStep/8;
 
       printSummary(i);
     }
@@ -515,6 +515,7 @@ void phasePattern() { // need standard mode to be trigged
 
     for (int i = (networkSize-1); i >= 0; i--) {
       ActualVirtualPositionFromOtherMode[i]= ActualVirtualPositionFromOtherMode[i]+800;
+
 
 
      // netPhaseBase[i]=netOldPhaseBase[(networkSize+1)-i];
