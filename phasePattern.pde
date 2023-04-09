@@ -725,7 +725,10 @@ void phasePattern() { // need standard mode to be trigged
       //   net.phase[i] += (i+1) *(TWO_PI/12); // 12 hit
       
       //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/11;    //PAS TOUCHER
-      net.phase[i] -= (i*TWO_PI/5)%PI/5;
+   //   net.phase[i] -= (i*TWO_PI/5)%PI/5;
+          net.phase[i] -= (i*TWO_PI/networkSize)%PI/(networkSize*3); // pas en mode circular ? 
+
+
       //   net.phase[networkSize-1-i] += (i*TWO_PI/3)%PI/10;    //PAS TOUCHER
       //    net.phase[networkSize-1-i] += (i*TWO_PI/3)%TWO_PI/10;    //PAS TOUCHER // ne va pas avec P
       //     net.phase[networkSize-1-i] += (i*TWO_PI/3)%TWO_PI/11;    //PAS TOUCHER

@@ -60,10 +60,10 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
           }
      
           if (beatPrecised==1 && measure==1 && beatPrecisedTrigged==true){
-           keyCode= CONTROL;
+           key= 'F';
           }
            if (beatPrecised==2 && measure==1 && beatPrecisedTrigged==true){
-           keyCode= CONTROL;
+           key= 'F';
           }
           
           if (measure==17 && beatTrigged==true ){
@@ -127,7 +127,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         key = 'i'; keyReleased();
        }
        }
-      if (measure<41){ 
+      if (measure<41 && measure>17){ 
         if (beatTrigged==true){ 
       oscillatorBlocked=0;
       propagationLevel=1;
@@ -149,6 +149,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       propagationLevel=1;
       oscillatorChangingPropagation=true;
         key = 'D'; keyReleased();
+         key = 'D'; keyReleased();
         text ("beatPrecised%4" +  key , 0, 0);
          }
        }
@@ -158,6 +159,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
       propagationLevel=1;
       oscillatorChangingPropagation=true;
        key = 'F'; keyReleased();
+        key = 'F'; keyReleased();
         text ("beatPrecised+2%4" +  key , 0, 100);
          }
        }
@@ -276,7 +278,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             
       }
     
-     if (measure > 66 && measure <= 73 && beatPrecised!=0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+     if (measure > 66 && measure <= 72 && beatPrecised!=0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'y';   
        }  
 
@@ -296,19 +298,20 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
 
      if ( positionMov == " quatrieme "  ){ // 82.4
 
-         if (measure >= 82 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+         if (measure >= 82 && beatPrecised == 5 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'o';   
        } 
 
        if (measure >= 82 && beatPrecised != 0 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
-          key = 'r';   
+          key = 'r';  
+            key = 'r';  
        }  
 
         if (measure >= 83 && beatTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'H';  
           key = 'H';  
           key = 'H';   
-          key = 'H';   
+          
        } 
 
        if (measure == 96 && beatPrecised == 4 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1

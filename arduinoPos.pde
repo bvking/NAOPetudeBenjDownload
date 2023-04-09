@@ -313,22 +313,6 @@ void arduinoPos() {
      println(" "); 
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   if (formerKeyMetro == '$' && (formerSartKey == 'X' || formerSartKey == 'x' || formerSartKey == 'W' || formerSartKey == 'w')) {
 
     for (int i = 0; i < networkSize; i++) {
@@ -405,7 +389,7 @@ void arduinoPos() {
   
     //*********** COMPUTE ACCELERATION
   
-           if (  keyMode == " null " || keyMode == " addSignalOneAndTwo " ) {
+           if (  keyMode == " null " || keyMode != " null "  ) {  // keyMode == " addSignalOneAndTwo "
      for (int i = 0; i < networkSize; i++) {  
        //     net.phase[i] = newPosF[i];  // to compute acceelration
       //**     net.phase[i] = newPosXaddSignal[i];
@@ -420,7 +404,7 @@ void arduinoPos() {
         accelerationBis[i] = (velocityBis[i] - oldVelocityBis[i]) / 1;
         
         mapAcceleration[i]= constrain ((int (map (abs(accelerationBis[i] *100), -100, 100, 0, 127))), 0, 127); 
-      
+   
   //      print(" velocityBis "); print (i);  print (" ");  print(velocityBis[i]); print (" "); 
         
  //       print(" acc  "); print (i);  print (" "); print(accelerationBis[i]); print(" "); 
@@ -428,12 +412,13 @@ void arduinoPos() {
  //       print(" mapAcc  "); print (i);  print (" "); print(mapAcceleration[i]); println(" "); 
         
        }
+        text ( "velocityBis[0] " + velocityBis[0], -400, 400 );
       }  
       
      //*********** END COMPUTE ACCELERATION 
   
 
-//  countRevs();  
+  countRevs();  
   bpmAsPulsationFunction();
   printMidiNoteVelocity();
   //SUBZERO
@@ -535,11 +520,11 @@ void arduinoPos() {
 
 
    if (keyMode!= " phasePattern ") {
-     if (measure <17) {
-      send24DatasToTeensy6motors(20, 3, -3, -1);
+     if (positionMov != " troisieme ") {
+      send24DatasToTeensy6motors(14, 3, -3, -1);
   }
   else
-      send24DatasToTeensy6motors(14, 3, -3, -1);
+      send24DatasToTeensy6motors(22, 3, -3, -1);
 
     }
 
