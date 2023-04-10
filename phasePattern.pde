@@ -753,7 +753,8 @@ void phasePattern() { // need standard mode to be trigged
 
       //  net.phase[i] -=(9-i)*0.05;
       //   net.phase[i] -=(networkSize-1-i)*0.05; // oscillator 11 do not move
-      net.phase[i] -= (networkSize- oscillatorBlocked-i)*0.05;
+   //   net.phase[i] -= (networkSize- oscillatorBlocked-i)*0.05;
+     net.phase[i] += (networkSize-1- oscillatorBlocked-i)*0.05;
     //  net.phase[i]=  net.phase[i]%TWO_PI;
 
       printSummary(i);
@@ -763,19 +764,19 @@ void phasePattern() { // need standard mode to be trigged
     for (int i = 0; i < networkSize; i++) {      
       //   net.phase[i] -=(networkSize-1-i)*0.1;
       //   net.phase[i]=  net.phase[i]%TWO_PI;
-         net.phase[i] += (networkSize- oscillatorBlocked-i)*0.01;
+         net.phase[i] += (networkSize-1- oscillatorBlocked-i)*0.1;
       //***    net.phase[i]=  net.phase[i]%TWO_PI;
       printSummary(i);
     }
   }
 
-   else if (key == 'g') { 
+   else if (key == 'g') {   // g1 reciproque S1
     println(" Decrease the gap between phases of 5% from the oscillator " + oscillatorBlocked + " called with the same number as memoryi " + memoryi   );  
     for (int i = 0; i < networkSize; i++) {
       //       net.phase[i] -=i*0.01;
       //         net.phase[i] -=i*0.05;
 
-      net.phase[i] -=      (oscillatorBlocked+i)*0.05;
+      net.phase[i] -= (networkSize- oscillatorBlocked-i)*0.05;
       net.phase[i]=  net.phase[i]%TWO_PI;
       key='#';
       printSummary(i);
@@ -786,7 +787,7 @@ void phasePattern() { // need standard mode to be trigged
     for (int i = 0; i < networkSize; i++) {
       //       net.phase[i] -=i*0.01;
     //  net.phase[i] -=i*0.1;
-       net.phase[i] -= (networkSize- oscillatorBlocked-i)*0.01;
+       net.phase[i] -= (networkSize- oscillatorBlocked-i)*0.1;
     //  net.phase[i]=  net.phase[i]%TWO_PI;
       printSummary(i);
     }
@@ -1038,7 +1039,8 @@ void phasePattern() { // need standard mode to be trigged
       // interFrequency[memoryi] = -1* net.naturalFrequency[i];
       printSummary(i);
     }
-  } else if (key == '0') {//Set all frequencies at 2.0");
+  } else if (key == '0') {
+    println("  Set all frequencies at 1.0"); 
     for (int i = 0; i < networkSize-0; i++) {   
       //  net.naturalFrequency[i]=2.0; 
       net.naturalFrequency[i]=1;

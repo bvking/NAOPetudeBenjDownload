@@ -71,7 +71,7 @@ println(portsUSB);
 
     //*************** WITH TEENSY connected
  //teensyport = new Serial(this, ports[0], 115200);// si port non connecte Monterey mais buetooth ouvert
- //   teensyport = new Serial(this, ports[0], 115200);// si port non connecte Catalina 
+  //  teensyport = new Serial(this, ports[1], 115200);// si port non connecte Catalina 
     teensyport = new Serial(this, ports[2],115200); // si port connecté Monterey
  
   //*************** WITHOUT ENODEER connected

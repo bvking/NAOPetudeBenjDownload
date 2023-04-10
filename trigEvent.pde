@@ -114,11 +114,11 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
            positionMov = " premierePartie ";
           }
 
-        else if (measure >= 58  && measure <=66 && beatPrecised < 4 ) { 
+        else if (measure >= 58  && measure <66 ) { //
            positionMov = " seconde " ; }
 
       //     /*  in addSignal1andTwoTerr
-        else if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true) {
+        else if (measure >= 66 && measure<82 && beatPrecised == 4 && beatPrecisedTrigged==true) {
            positionMov = " troisieme " ;
         //   keyCode = ALT; key = 'v'; // key 
             }
@@ -132,6 +132,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
               
       if (  positionMov == " premierePartie "){
        if (measure<41  || measure>=42 ){
+         if (measure < 58 ){
         if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
       oscillatorBlocked=5;
      // timeToTrig=millis();
@@ -165,27 +166,55 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         }
        }
 
-      if (measure>16){ 
+      if (measure>16 && measure<41){ 
         if (beatPrecised%4==0 && beatPrecisedTrigged==true){ 
-      oscillatorBlocked=0;
+    //  oscillatorBlocked=0;
+     oscillatorBlocked=1;
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-        key = 'D'; keyReleased();
-         key = 'D'; keyReleased();
+      //  key = 'D'; keyReleased();
+          key = 'g'; keyReleased();
+
+    
         text ("beatPrecised%4" +  key , 0, 0);
          }
        }
-      if (measure>16){ 
+      if (measure>16 && measure<41){ 
         if ((beatPrecised+2)%4==0 && beatPrecisedTrigged==true){ 
-      oscillatorBlocked=0;
+    //  oscillatorBlocked=0;
+      oscillatorBlocked=1;
       propagationLevel=1;
       oscillatorChangingPropagation=true;
-       key = 'F'; keyReleased();
-        key = 'F'; keyReleased();
+     //  key = 'F'; keyReleased();
+          key = 's'; keyReleased();
+     
         text ("beatPrecised+2%4" +  key , 0, 100);
          }
        }
-      
+// after 41
+
+          if (measure>41){ 
+              if (measure%2==0 && beatTrigged==true){ 
+
+      propagationLevel=1;
+      oscillatorChangingPropagation=true;
+        key = 'D'; keyReleased();
+
+        text ("beatPrecised=4  "+  key , 0, 0);
+         }
+
+            if ((measure+1)%2==0 && beatTrigged==true){ 
+    //  oscillatorBlocked=0;
+      oscillatorBlocked=1;
+      propagationLevel=1;
+      oscillatorChangingPropagation=true;
+        key = 'F'; keyReleased();
+        
+     
+        text ("beatPrecised+2%4" +  key , 0, 100);
+         }
+        }
+           
        if (measure==33){ 
          if (beatPrecised==3 && beatPrecisedTrigged==true  ){
       //  key = 'ç'; keyReleased();
@@ -206,12 +235,14 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
         if (measure==42){ 
          if (beatPrecised==4 && beatPrecisedTrigged==true  ){
         key = 'ç'; keyReleased();
-        key = 'F'; keyReleased();
+       // key = 'F'; keyReleased();
+         keyCode = CONTROL;
        
         key = '0'; keyReleased();
       //  keyCode =ALT; key = 'r';
         }
        }
+      }
       }
       }
 // TYRANSITION
@@ -236,43 +267,7 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
     //   keyCode =ALT; keyPressed(); key = 'a'; keyPressed();
         keyMode = " addSignalOneAndTwoTer ";
         formerKeyMetro = '*';
-      
-      if (beatPrecised%2==0 && beatPrecisedTrigged==true  ){ // signalToSplit>0.5 && // && millis()> timeToTrig+delayTimeToTrig
-     
-      oscillatorBlocked=0;
-      timeToTrig=millis();
-      propagationLevel=1;
-      oscillatorChangingPropagation=true;
-     //  key = 'D'; keyReleased();
-       }   
-
-
-       if (signalToSplit4>0.5 && millis()> timeToTrig+delayTimeToTrig4+80 ){  // 
-          oscillatorBlocked=0;
-
-       timeToTrig=millis();
-       oscillatorChangingPropagation=true;
-     //  key = 'd'; keyReleased();
-           
-        oscillatorBlocked=oscillatorBlocked%networkSize; 
-       }
-        
-       if (measure > 57)  {
-       //   key = 'F'; keyReleased();
-       }
-       
-      
-      if (measure == 58 && beatPrecised == 6 && beatPrecisedTrigged==true ){
-      //  formerKeyMetro = '*';
-      
-       //   key= '='; keyReleased();
-        }
-
-      if (measure == 58 && beatPrecised == 7 && beatPrecisedTrigged==true ){
-         //   positionMov = " seconde ";
-       //  key = '0'; keyReleased();
-        }
-         
+   
          int formerFrameTrigging;
          formerFrameTrigging=frameCount;
          
@@ -285,21 +280,27 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
     if (measure == 66 && beatPrecised == 4 && beatPrecisedTrigged==true){ // && frameCount>formerFrameTrigging+1
           keyMode = " trigEventWithAbletonSignal ";
           key= 0;
-         formerKeyMetro = '*';
+       //  formerKeyMetro = '*';
              
       
       
       }
      if (measure == 66 && beatPrecised == 5 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
-          key = 'y';   
+       key= 0;
+         formerKeyMetro = '*';
+             
+      //    key = 'y';   
         
             
              
              
       }
     if (measure == 66 && beatPrecised == 7 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
-        
-          key = 'y';   
+      key= 0;
+           key = 'y';
+          key = 'y';  
+           key = 'y'; 
+            key = 'y';  
             
                
             
@@ -315,11 +316,12 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
             measure == 78 || measure == 80
       
       ) {
-          if (measure == 76 && beatPrecised == 80 && beatPrecisedTrigged==true  ){ // && frameCount>formerFrameTrigging+1
+
+      if (measure == 76 && beatPrecised == 8 && beatPrecisedTrigged==true){ // && frameCount>formerFrameTrigging+1
          keyCode = CONTROL;
       } 
 
-      if ( measure < 80 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
+      if (measure > 66 && measure < 76 && beatPrecised == 4 && beatPrecisedTrigged==true ){ // && frameCount>formerFrameTrigging+1
           key = 'i'; 
 
        }
@@ -372,19 +374,19 @@ void trigEventWithAbletonSignal() {  // change de sens de propagagtion.   ATTENT
  
   
     text ( " positionMov " + positionMov +  " Data[3] " + DataToDueCircularVirtualPosition[3] + " key " + key , width-width, -400);
-    text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 100);
-    text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 200);
-    text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 300);
+    text  ( "  beginMeasure " +  beginMeasure +  " beatTrigged " + beatTrigged + " measure " +  measure, 300, 800);
+    text  ( " trigEffect " + trigEffect + " enco " +  abs ((int)map (encodeur[0], 0, 800, 0, 127)), 300, 900);
+    text  ( " encodeur[1]" + encodeur[1] +  " trigEffectBis " + trigEffectBis +  " encO " +  abs ((int)map (oldEncodeur[0], 0, 800, 0, 127)), 300, 1000);
 
       for (int i = 0; i < networkSize; i++) {
       //  text ( "metro" + metroPhase[i] + " actual Other" + i + " " + ActualVirtualPositionFromOtherMode[i] + " PendularVirtualPosition " + i + " " + PendularVirtualPosition[i] + " virtual " + i + " " + VirtualPosition[i] + " actual " + i + " " + ActualVirtualPosition[i] + " data " + i + " " + DataToDueCircularVirtualPosition[i], 800, 1600- 100*i );
        }
 
     
-      textSize (75);
-     text ( " signal3 " + signal[3] , 300, 800);
-     text ( " signal4 " + signal[4] , 300, 900);
-     text ( " signal5 " + signal[5] , 300, 1000);
+      textSize (50);
+     text ( " signal3 " + signal[3] , 300, 1100);
+     text ( " signal4 " + signal[4] , 300, 1200);
+     text ( " signal5 " + signal[5] , 300, 1300);
      text ( " measure  " + measure + "beatPrecised  " + beatPrecised + " key " + key + " " + keyCode, 300, 1100);
 
      phasePattern();
